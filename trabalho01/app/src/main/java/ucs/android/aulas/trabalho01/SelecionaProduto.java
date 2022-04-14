@@ -86,9 +86,9 @@ public class SelecionaProduto extends AppCompatActivity {
                 Produto produto = new Produto();
                 Mesa mesa = new Mesa();
                 produto.setProduto(snomeproduto,fvalor,contador);
+                bd.setProduto(produto);
                 mesa.setNum(Integer.parseInt(snomemesa));
 
-                //TODO grava produto
                 finish();
             }
         });

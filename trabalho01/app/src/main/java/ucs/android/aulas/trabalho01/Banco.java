@@ -34,12 +34,17 @@ public class Banco {
         this.mesaslista.add(mesas);
     }
 
-    public Produto setProduto(String nome, double valor, int qtd){
+    public Produto getProduto(String nome, double valor, int qtd){
         for (Produto p : produtoslista) {
             if (p.getNome().equals(nome)) {
 //                return nome;
             }
         }
         return null;
+    }
+
+    public void setProduto(Produto produto){
+
+        this.produtoslista.add(produto);
     }
 }

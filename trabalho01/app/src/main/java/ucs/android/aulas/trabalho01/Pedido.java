@@ -42,7 +42,7 @@ public class Pedido extends AppCompatActivity {
             List<String> dados = new ArrayList<String>();
             for (int i=0;i<45;i++) {
                 if (bd.getMesa(i) != null){
-                    dados.add("Mesa: " + String.valueOf(i) + " Pedido: " + String.valueOf(i) );
+                    dados.add("Mesa: " + String.valueOf(i) + " Pedido: " + String.valueOf(id) );
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dados);
                 listview.setAdapter(adapter);
