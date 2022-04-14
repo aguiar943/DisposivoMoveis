@@ -25,8 +25,6 @@ public class SelecionaProduto extends AppCompatActivity {
     private String lanche, snomemesa, sIDPedido, snomeproduto;
     private float fvalor;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +84,9 @@ public class SelecionaProduto extends AppCompatActivity {
 
                 Banco bd = Banco.getInstancia();
                 Produto produto = new Produto();
+                Mesa mesa = new Mesa();
                 produto.setProduto(snomeproduto,fvalor,contador);
+                mesa.setNum(Integer.parseInt(snomemesa));
 
                 //TODO grava produto
                 finish();
