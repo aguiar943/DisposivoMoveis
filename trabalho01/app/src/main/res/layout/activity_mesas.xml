@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="01" />
 
                 <Button
@@ -74,7 +74,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="02" />
 
                 <Button
@@ -83,7 +83,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="03" />
 
                 <Button
@@ -92,7 +92,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="04" />
             </LinearLayout>
 
@@ -108,7 +108,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="05" />
 
                 <Button
@@ -117,7 +117,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="06" />
 
                 <Button
@@ -126,7 +126,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="07" />
 
                 <Button
@@ -135,7 +135,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="08" />
             </LinearLayout>
 
@@ -151,7 +151,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="09" />
 
                 <Button
@@ -160,7 +160,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="10" />
 
                 <Button
@@ -169,7 +169,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="11" />
 
                 <Button
@@ -178,7 +178,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="12" />
             </LinearLayout>
 
@@ -194,7 +194,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="13" />
 
                 <Button
@@ -203,7 +203,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="14" />
 
                 <Button
@@ -212,7 +212,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="15" />
 
                 <Button
@@ -221,7 +221,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="16" />
             </LinearLayout>
 
@@ -237,7 +237,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="17" />
 
                 <Button
@@ -246,7 +246,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="18" />
 
                 <Button
@@ -255,7 +255,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="19" />
 
                 <Button
@@ -264,7 +264,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="20" />
             </LinearLayout>
 
@@ -280,7 +280,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="21" />
 
                 <Button
@@ -289,7 +289,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="22" />
 
                 <Button
@@ -298,7 +298,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="23" />
 
                 <Button
@@ -307,7 +307,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="24" />
             </LinearLayout>
 
@@ -323,7 +323,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="25" />
 
                 <Button
@@ -332,7 +332,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="26" />
 
                 <Button
@@ -341,7 +341,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="27" />
 
                 <Button
@@ -350,7 +350,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="28" />
             </LinearLayout>
 
@@ -366,7 +366,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="29" />
 
                 <Button
@@ -375,7 +375,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="30" />
 
                 <Button
@@ -384,7 +384,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="31" />
 
                 <Button
@@ -393,7 +393,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="32" />
             </LinearLayout>
 
@@ -409,7 +409,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="34" />
 
                 <Button
@@ -418,7 +418,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="35" />
 
                 <Button
@@ -427,7 +427,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="36" />
 
                 <Button
@@ -436,7 +436,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="37" />
             </LinearLayout>
 
@@ -452,7 +452,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="38" />
 
                 <Button
@@ -461,7 +461,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="39" />
 
                 <Button
@@ -470,7 +470,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="40" />
 
                 <Button
@@ -479,7 +479,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#388E3C"
-                    android:onClick="btnapertarmesa1"
+                    android:onClick="btnmesaapertada"
                     android:text="41" />
             </LinearLayout>
 

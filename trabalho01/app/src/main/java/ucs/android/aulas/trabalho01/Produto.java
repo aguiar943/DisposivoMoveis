@@ -108,7 +108,7 @@ public class Produto extends AppCompatActivity {
 //        bd.getMesa(Integer.parseInt(sIDPedido));
         startActivity(intent);
     }
-    public void teste(View view){
+    public void btnclickfinaliza(View view){
         Intent intent = new Intent(Produto.this,teste.class);
         TextView b = (TextView) view;
         snomeproduto = b.getText().toString();

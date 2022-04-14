@@ -14,11 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onclickmesa(View view){
-        Intent intent = new Intent(MainActivity.this, Mesa.class);
-        startActivity(intent);
-    }
-
     public void onclickpedidos(View view){
         Intent intent = new Intent(MainActivity.this, Pedido.class);
         startActivity(intent);
