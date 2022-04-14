@@ -17,8 +17,8 @@ public class Produto extends AppCompatActivity {
 
     public Produto() {}
 
-    public Produto(String nome, double valor, int qtd) {
-        super();
+    public void setProduto(String nome, double valor, int qtd) {
+        //super();
         this.nome = nome;
         this.valor = valor;
         this.qtd = qtd;
@@ -54,10 +54,6 @@ public class Produto extends AppCompatActivity {
 
     public void setQtd(int qtd) {
         this.qtd = qtd;
-    }
-
-    public Mesa getMesa() {
-        return mesa;
     }
 
     public void setMesa(Mesa mesa) {
@@ -109,7 +105,7 @@ public class Produto extends AppCompatActivity {
         intent.putExtra("PegaNomeProduto", snomeproduto);
         intent.putExtra("PegaNomeMesa",snomemesa);
         intent.putExtra("PegaIDPedido",sIDPedido);
-        bd.getMesa(Integer.parseInt(sIDPedido));
+//        bd.getMesa(Integer.parseInt(sIDPedido));
         startActivity(intent);
     }
     public void teste(View view){
@@ -124,7 +120,7 @@ public class Produto extends AppCompatActivity {
         intent.putExtra("PegaNomeProduto", snomeproduto);
         intent.putExtra("PegaNomeMesa",snomemesa);
         intent.putExtra("PegaIDPedido",sIDPedido);
-        bd.getMesa(Integer.parseInt(sIDPedido));
+//        bd.getMesa(Integer.parseInt(sIDPedido));
         startActivity(intent);
     }
 }

@@ -23,6 +23,10 @@ public class SelecionaProduto extends AppCompatActivity {
     private TextView qtd;
     private int contador;
     private String lanche, snomemesa, sIDPedido, snomeproduto;
+    private float fvalor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +85,11 @@ public class SelecionaProduto extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which ) {
                 Toast.makeText(SelecionaProduto.this, "Produto lançado", Toast.LENGTH_SHORT).show();
+
+                Banco bd = Banco.getInstancia();
+                Produto produto = new Produto();
+                produto.setProduto(snomeproduto,fvalor,contador);
+
                 //TODO grava produto
                 finish();
             }
@@ -96,42 +105,52 @@ public class SelecionaProduto extends AppCompatActivity {
         if (lanche.contains("X-")) {
             findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.xis);
             tvResp1.setText("SERVE 1 PESSOA" + '\n' + "R$ 20,00" );
+            fvalor = 20.00f;
         } else {
             if (lanche.contains("ALA")) {
                 findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.ala);
                 tvResp1.setText("SERVE 1 PESSOA" + '\n' + "R$ 25,00" );
+                fvalor = 25.00f;
             } else {
                 if (lanche.contains("TORR")) {
                     findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.torrada1);
                     tvResp1.setText("SERVE 1 PESSOA" + '\n' + "R$ 18,00" );
+                    fvalor = 18.00f;
                 } else {
                     if (lanche.contains("HOT")) {
                         findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.hotdog);
                         tvResp1.setText("SERVE 1 PESSOA" + '\n' + "R$ 25,00" );
+                        fvalor = 25.00f;
                     } else {
                         if (lanche.equals("BAURU")) {
                             findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.bauru);
                             tvResp1.setText("SERVE 2 PESSOA" + '\n' + "R$ 35,00" );
+                            fvalor = 35.00f;
                         } else {
                             if (lanche.contains("REFRI")) {
                                 findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.refrig);
                                 tvResp1.setText("R$ 5,00");
+                                fvalor = 5.00f;
                             } else {
                                 if (lanche.contains("SUC")) {
                                     findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.suco);
                                     tvResp1.setText("R$ 10,00");
+                                    fvalor = 10.00f;
                                 } else {
                                     if (lanche.equals("CHA")) {
                                         findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.cha);
                                         tvResp1.setText("R$ 8,00");
+                                        fvalor = 8.00f;
                                     } else {
                                         if (lanche.contains("ENERG")) {
                                             findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.energeticog);
                                             tvResp1.setText("R$ 15,00");
+                                            fvalor = 15.00f;
                                         } else {
                                             if (lanche.contains("AGUA")) {
                                                 findViewById(R.id.Imgitem).setBackgroundResource(R.drawable.agua);
                                                 tvResp1.setText("R$ 5,00");
+                                                fvalor = 5.00f;
                                             }
                                         }
                                     }

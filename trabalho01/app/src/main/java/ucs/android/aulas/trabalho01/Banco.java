@@ -30,6 +30,16 @@ public class Banco {
     }
 
     public void setMesa(Mesa mesas){
+
         this.mesaslista.add(mesas);
+    }
+
+    public Produto setProduto(String nome, double valor, int qtd){
+        for (Produto p : produtoslista) {
+            if (p.getNome().equals(nome)) {
+//                return nome;
+            }
+        }
+        return null;
     }
 }
