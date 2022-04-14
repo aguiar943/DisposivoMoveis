@@ -58,52 +58,12 @@ public class Mesa extends AppCompatActivity {
 
     public void ocultamesas(){
         Banco bd = Banco.getInstancia();
-        for (int i=0;i<45;i++) {
+        for (int i=1;i<45;i++) {
             if (bd.getMesa(i) != null){
-                if (i == 1)
-                    findViewById(R.id.btnmesa01).setVisibility(View.INVISIBLE);
-                if (i == 2)
-                    findViewById(R.id.btnmesa02).setVisibility(View.INVISIBLE);
-                if (i == 4)
-                    findViewById(R.id.btnmesa04).setVisibility(View.INVISIBLE);
-                if (i == 5)
-                    findViewById(R.id.btnmesa05).setVisibility(View.INVISIBLE);
-                if (i == 6)
-                    findViewById(R.id.btnmesa06).setVisibility(View.INVISIBLE);
-                if (i == 7)
-                    findViewById(R.id.btnmesa07).setVisibility(View.INVISIBLE);
-                if (i == 8)
-                    findViewById(R.id.btnmesa08).setVisibility(View.INVISIBLE);
-                if (i == 9)
-                    findViewById(R.id.btnmesa09).setVisibility(View.INVISIBLE);
-                if (i == 10)
-                    findViewById(R.id.btnmesa10).setVisibility(View.INVISIBLE);
-                if (i == 11)
-                    findViewById(R.id.btnmesa11).setVisibility(View.INVISIBLE);
-                if (i == 12)
-                    findViewById(R.id.btnmesa12).setVisibility(View.INVISIBLE);
-                if (i == 13)
-                    findViewById(R.id.btnmesa13).setVisibility(View.INVISIBLE);
-                if (i == 14)
-                    findViewById(R.id.btnmesa14).setVisibility(View.INVISIBLE);
-                if (i == 15)
-                    findViewById(R.id.btnmesa15).setVisibility(View.INVISIBLE);
-                if (i == 16)
-                    findViewById(R.id.btnmesa16).setVisibility(View.INVISIBLE);
-                if (i == 17)
-                    findViewById(R.id.btnmesa17).setVisibility(View.INVISIBLE);
-                if (i == 18)
-                    findViewById(R.id.btnmesa18).setVisibility(View.INVISIBLE);
-                if (i == 19)
-                    findViewById(R.id.btnmesa19).setVisibility(View.INVISIBLE);
-                if (i == 20)
-                    findViewById(R.id.btnmesa20).setVisibility(View.INVISIBLE);
-                if (i == 21)
-                    findViewById(R.id.btnmesa21).setVisibility(View.INVISIBLE);
-                if (i == 22)
-                    findViewById(R.id.btnmesa22).setVisibility(View.INVISIBLE);
-                if (i == 23)
-                    findViewById(R.id.btnmesa23).setVisibility(View.INVISIBLE);
+                String buttonID = "btnmesa0" + i;
+                int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+                Button c = ((Button) findViewById(resID));
+                c.setVisibility(View.INVISIBLE);
             }
         }
     }
