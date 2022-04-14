@@ -114,7 +114,7 @@
                             android:backgroundTint="#BCA8A8"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="REFRI LATA"
                             android:textSize="25sp" />
 
@@ -124,7 +124,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="REFRI KS"
                             android:textSize="25sp" />
 
@@ -134,7 +134,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="REFRI 2L"
                             android:textSize="25sp" />
 
@@ -144,7 +144,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="REFRI MINI"
                             android:textSize="25sp" />
 
@@ -154,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO"
                             android:textSize="25sp" />
 
@@ -164,7 +164,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="AGUA C/ GAS"
                             android:textSize="25sp" />
 
@@ -174,7 +174,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="AGUA S/GAS"
                             android:textSize="25sp" />
 
@@ -184,7 +184,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO LARANJA"
                             android:textSize="25sp" />
 
@@ -194,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO MORANGO"
                             android:textSize="25sp" />
 
@@ -204,7 +204,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO MARACUJA"
                             android:textSize="25sp" />
 
@@ -214,7 +214,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO DETOX"
                             android:textSize="25sp" />
 
@@ -224,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO DESINCHA"
                             android:textSize="25sp" />
 
@@ -234,7 +234,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="CHA"
                             android:textSize="25sp" />
 
@@ -244,7 +244,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="ENERGETICO"
                             android:textSize="25sp" />
 
@@ -254,7 +254,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="ENERGETICO LATA"
                             android:textSize="25sp" />
 
@@ -264,7 +264,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="ENERGETICO GRANDE"
                             android:textSize="25sp" />
 
@@ -274,7 +274,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="SUCO JARRA"
                             android:textSize="25sp" />
 
@@ -293,7 +293,7 @@
                             android:clickable="true"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-DA CASA"
                             android:textSize="25sp" />
 
@@ -303,7 +303,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-SALADA"
                             android:textSize="25sp" />
 
@@ -313,7 +313,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="ALA MINUTA"
                             android:textSize="25sp" />
 
@@ -323,7 +323,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="BAURU"
                             android:textSize="25sp" />
 
@@ -333,7 +333,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-FRANGO"
                             android:textSize="25sp" />
 
@@ -343,7 +343,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-FRANGO COM OVO"
                             android:textSize="25sp" />
 
@@ -353,7 +353,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="HOT DOG"
                             android:textSize="25sp" />
 
@@ -363,7 +363,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="HOT DOG DUPLO"
                             android:textSize="25sp" />
 
@@ -373,7 +373,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="HOT DOG FRANGO"
                             android:textSize="25sp" />
 
@@ -383,7 +383,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="TORRADA"
                             android:textSize="25sp" />
 
@@ -393,7 +393,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="TORRADA SIMPLES"
                             android:textSize="25sp" />
 
@@ -403,7 +403,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="TORRADA DUPLA"
                             android:textSize="25sp" />
 
@@ -413,7 +413,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-VEGETARIANO"
                             android:textSize="25sp" />
 
@@ -423,7 +423,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-DOCE"
                             android:textSize="25sp" />
 
@@ -433,7 +433,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-TUDAO"
                             android:textSize="25sp" />
 
@@ -443,7 +443,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-LOUCURA"
                             android:textSize="25sp" />
 
@@ -453,7 +453,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
                             android:gravity="bottom|center"
-                            android:onClick="clickteste"
+                            android:onClick="btnclickprodutoselecionado"
                             android:text="X-FIT"
                             android:textSize="25sp" />
 

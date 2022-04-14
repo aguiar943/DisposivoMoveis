@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trabalho01">
         <activity
-            android:name=".teste"
-            android:exported="false" />
-        <activity
             android:name=".Pedido"
             android:exported="false" />
         <activity

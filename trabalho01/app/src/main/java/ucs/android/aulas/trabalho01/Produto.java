@@ -93,12 +93,10 @@ public class Produto extends AppCompatActivity {
         }
     }
 
-    public void clickteste(View view){
+    public void btnclickprodutoselecionado(View view){
         Intent intent = new Intent(Produto.this,SelecionaProduto.class);
         TextView b = (TextView) view;
         snomeproduto = b.getText().toString();
-
-        Banco bd = Banco.getInstancia();
 
         intent.putExtra("PegaNomeProduto", snomeproduto);
         intent.putExtra("PegaNomeMesa",snomemesa);

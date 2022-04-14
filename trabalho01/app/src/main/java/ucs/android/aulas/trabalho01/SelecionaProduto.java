@@ -95,7 +95,7 @@ public class SelecionaProduto extends AppCompatActivity {
         ConfirmaItem.setNegativeButton("Não",null);
         ConfirmaItem.create().show();
     }
-    
+
     public void preencheedits(){
         TextView tvResp1 = findViewById(R.id.tvtexto);
         if (lanche.contains("X-")) {

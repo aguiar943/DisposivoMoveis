@@ -25,7 +25,9 @@ public class Pedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
         Intent intent = getIntent();
+
         binicio = intent.getBooleanExtra("PegaInicio",true);
+
         if (binicio) {
             id = 0;
         } else {

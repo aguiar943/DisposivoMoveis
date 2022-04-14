@@ -32,7 +32,6 @@ public class Mesa extends AppCompatActivity {
     }
 
     public void btnmesaapertada(View view){
-//        Intent intent = new Intent(getBaseContext(),MainActivity2.class);
         Intent intent = new Intent(Mesa.this, Produto.class);
         Button b = (Button) view;
 
