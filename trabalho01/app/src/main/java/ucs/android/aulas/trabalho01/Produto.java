@@ -103,7 +103,6 @@ public class Produto extends AppCompatActivity {
         intent.putExtra("PegaNomeProduto", snomeproduto);
         intent.putExtra("PegaNomeMesa",snomemesa);
         intent.putExtra("PegaIDPedido",sIDPedido);
-//        bd.getMesa(Integer.parseInt(sIDPedido));
         startActivity(intent);
     }
     public void btnclickfinaliza(View view){

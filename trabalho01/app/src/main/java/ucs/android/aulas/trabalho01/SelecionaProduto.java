@@ -74,8 +74,6 @@ public class SelecionaProduto extends AppCompatActivity {
         }
     }
 
-
-
     private void mostraAlerta() {
         AlertDialog.Builder ConfirmaItem = new AlertDialog.Builder(SelecionaProduto.this);
         ConfirmaItem.setTitle("Atenção!");
@@ -97,9 +95,7 @@ public class SelecionaProduto extends AppCompatActivity {
         ConfirmaItem.setNegativeButton("Não",null);
         ConfirmaItem.create().show();
     }
-
-
-
+    
     public void preencheedits(){
         TextView tvResp1 = findViewById(R.id.tvtexto);
         if (lanche.contains("X-")) {
