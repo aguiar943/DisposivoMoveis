@@ -109,18 +109,10 @@ public class Produto extends AppCompatActivity {
         startActivity(intent);
     }
     public void btnclickfinaliza(View view){
-        Intent intent = new Intent(Produto.this,teste.class);
-        TextView b = (TextView) view;
-        snomeproduto = b.getText().toString();
 
-        Banco bd = Banco.getInstancia();
-
-
-
-        intent.putExtra("PegaNomeProduto", snomeproduto);
-        intent.putExtra("PegaNomeMesa",snomemesa);
-        intent.putExtra("PegaIDPedido",sIDPedido);
-//        bd.getMesa(Integer.parseInt(sIDPedido));
+        Intent intent = new Intent(Produto.this,Pedido.class);
+        intent.putExtra("PegaInicio", false);
+        intent.putExtra("PegaIDPedido",Integer.parseInt(sIDPedido));
         startActivity(intent);
     }
 }

@@ -11,6 +11,7 @@ public class Pedido extends AppCompatActivity {
     private int id;
     private Mesa mesa;
     private Produto produtos;
+    private boolean binicio;
 
     public Pedido() {}
 
@@ -23,7 +24,13 @@ public class Pedido extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
-        id = 0;
+        Intent intent = getIntent();
+        binicio = intent.getBooleanExtra("PegaInicio",true);
+        if (binicio) {
+            id = 0;
+        } else {
+            id = intent.getIntExtra("PegaIDPedido",0);
+        }
     }
 
     public void onclickpedidos(View view){

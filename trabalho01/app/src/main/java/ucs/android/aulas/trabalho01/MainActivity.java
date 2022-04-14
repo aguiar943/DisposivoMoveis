@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclickpedidos(View view){
         Intent intent = new Intent(MainActivity.this, Pedido.class);
+        intent.putExtra("PegaInicio", true);
         startActivity(intent);
     }
 }
