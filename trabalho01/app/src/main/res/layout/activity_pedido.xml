@@ -44,19 +44,31 @@
                 android:layout_height="679dp"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="408dp">
+                    android:layout_height="466dp"
+                    android:orientation="vertical">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                    <ListView
+                        android:id="@+id/lvlistapedidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/button"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/design_default_color_secondary_variant"
-                    android:onClick="onclickpedidos"
-                    android:text="novo pedido" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:onClick="onclickpedidos"
+                        android:text="novo pedido" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

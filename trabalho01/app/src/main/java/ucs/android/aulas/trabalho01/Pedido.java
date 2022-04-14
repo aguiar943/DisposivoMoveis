@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido extends AppCompatActivity {
     private int id;
@@ -31,7 +36,17 @@ public class Pedido extends AppCompatActivity {
         if (binicio) {
             id = 0;
         } else {
+            ListView listview = (ListView) findViewById(R.id.lvlistapedidos);
             id = intent.getIntExtra("PegaIDPedido",0);
+            Banco bd = Banco.getInstancia();
+            List<String> dados = new ArrayList<String>();
+            for (int i=0;i<45;i++) {
+                if (bd.getMesa(i) != null){
+                    dados.add(String.valueOf(i));
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dados);
+                listview.setAdapter(adapter);
+            }
         }
     }
 
