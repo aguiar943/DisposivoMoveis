@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class Mesa extends AppCompatActivity {
     private int num;
     private String sIDPedido, snomemesa;
+
     public int getNum() {
         return num;
     }
@@ -36,10 +37,20 @@ public class Mesa extends AppCompatActivity {
         Button b = (Button) view;
 
         snomemesa = b.getText().toString();
+        int nro = Integer.parseInt(snomemesa);
         intent.putExtra("PegaNomeMesa",snomemesa);
         intent.putExtra("PegaIDPedido",sIDPedido);
 
-
+        Banco bd = Banco.getInstancia();
+//        Mesa mesasTemp = bd.getMesa(nro);
+//        if (mesasTemp.equals(null)) {
+//            Mesa mesas = new Mesa();
+//            mesas.setNum(nro);
+//            bd.setMesa(mesas);
+//        }
+        Mesa mesas = new Mesa();
+        mesas.setNum(nro);
+        bd.setMesa(mesas);
 
         startActivity(intent);
     }

@@ -81,6 +81,7 @@ public class SelecionaProduto extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which ) {
                 Toast.makeText(SelecionaProduto.this, "Produto lançado", Toast.LENGTH_SHORT).show();
+                //TODO grava produto
                 finish();
             }
         });

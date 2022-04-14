@@ -28,4 +28,8 @@ public class Banco {
         }
         return null;
     }
+
+    public void setMesa(Mesa mesas){
+        this.mesaslista.add(mesas);
+    }
 }
