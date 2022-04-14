@@ -60,7 +60,13 @@ public class Mesa extends AppCompatActivity {
         Banco bd = Banco.getInstancia();
         for (int i=1;i<45;i++) {
             if (bd.getMesa(i) != null){
+
                 String buttonID = "btnmesa0" + i;
+                
+                if (i>=10){
+                    buttonID = "btnmesa" + i;
+                }
+
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 Button c = ((Button) findViewById(resID));
                 c.setVisibility(View.INVISIBLE);
