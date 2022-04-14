@@ -100,8 +100,6 @@ public class Produto extends AppCompatActivity {
 
         Banco bd = Banco.getInstancia();
 
-
-
         intent.putExtra("PegaNomeProduto", snomeproduto);
         intent.putExtra("PegaNomeMesa",snomemesa);
         intent.putExtra("PegaIDPedido",sIDPedido);
