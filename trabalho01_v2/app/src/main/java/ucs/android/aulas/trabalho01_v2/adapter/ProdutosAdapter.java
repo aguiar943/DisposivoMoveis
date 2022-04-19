@@ -32,7 +32,7 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
         TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
 //        TextView valor = (TextView) rowView.findViewById(R.id.txtValor);
 //        TextView mesa = (TextView) rowView.findViewById(R.id.txtMesa);
-        nomeitem.setText(Integer.toString(elementos.get(position).getId()));
+        nomeitem.setText((elementos.get(position).getNomeProduto()));
 //        mesa.setText(Integer.toString(elementos.get(position).get()));
 
 

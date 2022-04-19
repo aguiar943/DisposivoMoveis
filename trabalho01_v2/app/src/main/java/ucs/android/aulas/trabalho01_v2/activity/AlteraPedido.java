@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 public class AlteraPedido extends AppCompatActivity {
     ArrayList<Pedido> listaPedidos;
+
     ArrayList<Produto> listaProdutos;
     private AlteraPedido binding;
     @Override
@@ -32,16 +34,25 @@ public class AlteraPedido extends AppCompatActivity {
         Intent intent = getIntent();
         ListView lista = findViewById(R.id.lvItens);
         final int id = intent.getIntExtra("ID", 0);
-//        BancoDados bd = ;
 
-        listaPedidos =   BancoDados.getInstancia().MostraItens(id);
+        listaPedidos =   BancoDados.getInstancia().getAllPedidos();
+        ArrayList<Produto> listaPedidos1 = new ArrayList<>();
+        listaPedidos1.clear();
+
+        for (Pedido p : listaPedidos) {
+            if (p.getId() == id) {
+                p.getPedidoProdutos(id);
+                listaPedidos1.add(p.getPedidoProdutos(id));
+            }
+        }
 
 
-        PedidosAdapter adapter = new PedidosAdapter(getBaseContext(), listaPedidos);
+
+
+        ProdutosAdapter adapter = new ProdutosAdapter(getBaseContext(), listaPedidos1);
         lista.setAdapter(adapter);
 
-
-        listaPedidos = BancoDados.getInstancia().getAllPedidos();
+//        listaPedidos = BancoDados.getInstancia().getAllPedidos();
 //        listaPedidos = BancoDados.getInstancia().getPedido();
         //ListView lista = (ListView) findViewById(R.id.lvLivros);
 

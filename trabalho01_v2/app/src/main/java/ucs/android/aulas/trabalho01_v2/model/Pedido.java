@@ -43,5 +43,13 @@ public class Pedido implements Serializable {
         this.produto = produto;
     }
 
+    public Produto getPedidoProdutos(int nro) {
+        return produto;
+    }
+
+    public int getPedido(int nro) {
+        return id;
+    }
+
 
 }
