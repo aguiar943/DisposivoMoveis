@@ -49,56 +49,5 @@ public class AlteraPedido extends AppCompatActivity {
         }
         ProdutosAdapter adapter = new ProdutosAdapter(getBaseContext(), listaPedidos1);
         lista.setAdapter(adapter);
-
-//        listaPedidos = BancoDados.getInstancia().getAllPedidos();
-//        listaPedidos = BancoDados.getInstancia().getPedido();
-        //ListView lista = (ListView) findViewById(R.id.lvLivros);
-
-//        ListView lista = binding.lvPedidos;
-//
-//        PedidosAdapter adapter = new PedidosAdapter(getContext(), listaPedidos);
-//        lista.setAdapter(adapter);
-
-
-////        final EditText autor = (EditText) findViewById(R.id.etAutor);
-////        final EditText ano = (EditText) findViewById(R.id.etAno);
-////        nome.setText(livro.getTitulo());
-////        autor.setText(livro.getAutor());
-////        ano.setText(String.valueOf(livro.getAno()));
-//
-//        final Button alterar = (Button) findViewById(R.id.btnAlterar);
-//        alterar.setOnClickListener(v -> {
-//            Livro livro1 = new Livro();
-//            livro1.setId(id);
-//            livro1.setTitulo(nome.getText().toString());
-//            livro1.setAutor(autor.getText().toString());
-//            livro1.setAno(Integer.parseInt(ano.getText().toString()));
-//            bd.updateLivro(livro1);
-//            Intent intent1 = new Intent(EditarLivroActivity.this, MainActivity.class);
-//            startActivity(intent1);
-//        });
-//
-//        final Button remover = (Button) findViewById(R.id.btnRemover);
-//        remover.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                new AlertDialog.Builder(EditarLivroActivity.this)
-//                        .setTitle(R.string.confirmar_exclusao)
-//                        .setMessage(R.string.quer_mesmo_apagar)
-//                        .setIcon(android.R.drawable.ic_dialog_alert)
-//                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//
-//                            public void onClick(DialogInterface dialog, int whichButton) {
-//                                Livro livro = new Livro();
-//                                livro.setId(id);
-//                                bd.deleteLivro(livro);
-//                                Intent intent = new Intent(EditarLivroActivity.this, MainActivity.class);
-//                                startActivity(intent);
-//                            }
-//                        })
-//                        .setNegativeButton(android.R.string.no, null).show();
-//            }
-//        });
     }
 }
