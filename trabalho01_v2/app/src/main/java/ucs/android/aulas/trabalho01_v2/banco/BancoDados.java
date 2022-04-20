@@ -76,6 +76,21 @@ public class BancoDados {
         return listaPedidos;
     }
 
+
+
+    public ArrayList<Pedido> getPedidos() {
+        ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
+        int iaux = -1;
+        for (Pedido p : pedidoslista) {
+            if (iaux == p.getId()) {
+            } else {
+                listaPedidos.add(p);
+            }
+            iaux = (p.getId());
+        }
+        return listaPedidos;
+    }
+
     public ArrayList<Pedido> MostraItens(int nro){
         ArrayList<Pedido> pedidoslista = new ArrayList<Pedido>();
         for (Pedido p : pedidoslista) {
@@ -162,16 +177,5 @@ public class BancoDados {
             }
         }
         return listaProdutos;
-    }
-
-
-    public Produto getProduto(int nro) {
-        ArrayList<Produto> listaProdutos = new ArrayList<>();
-        for (Produto p : listaProdutos) {
-            if (p.getId() == nro) {
-                return p;
-            }
-        }
-        return null;
     }
 }

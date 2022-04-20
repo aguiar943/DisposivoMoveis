@@ -16,11 +16,6 @@
             android:name=".activity.Produto1Activity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProdutoActivity"
-            android:exported="false"
-            android:label="@string/title_activity_produto"
-            android:theme="@style/Theme.Trabalho01_v2.NoActionBar" />
-        <activity
             android:name=".activity.MesaActivity"
             android:exported="false"
             android:label="@string/title_activity_mesa"

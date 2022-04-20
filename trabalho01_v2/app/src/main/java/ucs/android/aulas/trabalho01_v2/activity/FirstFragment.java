@@ -39,9 +39,7 @@ public class FirstFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        listaPedidos = BancoDados.getInstancia().getAllPedidos();
-//        listaPedidos = BancoDados.getInstancia().getPedido();
-        //ListView lista = (ListView) findViewById(R.id.lvLivros);
+        listaPedidos = BancoDados.getInstancia().getPedidos();
 
         ListView lista = binding.lvPedidos;
 

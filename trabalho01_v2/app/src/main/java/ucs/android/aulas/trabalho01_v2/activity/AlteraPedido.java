@@ -36,7 +36,9 @@ public class AlteraPedido extends AppCompatActivity {
         final int id = intent.getIntExtra("ID", 0);
 
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
+
         ArrayList<Produto> listaPedidos1 = new ArrayList<>();
+
         listaPedidos1.clear();
 
         for (Pedido p : listaPedidos) {
@@ -45,10 +47,6 @@ public class AlteraPedido extends AppCompatActivity {
                 listaPedidos1.add(p.getPedidoProdutos(id));
             }
         }
-
-
-
-
         ProdutosAdapter adapter = new ProdutosAdapter(getBaseContext(), listaPedidos1);
         lista.setAdapter(adapter);
 
