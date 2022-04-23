@@ -19,6 +19,7 @@ import ucs.android.aulas.trabalho01_v2.banco.BancoDados;
 import ucs.android.aulas.trabalho01_v2.model.Bebida;
 import ucs.android.aulas.trabalho01_v2.model.Mesa;
 import ucs.android.aulas.trabalho01_v2.model.Pedido;
+import ucs.android.aulas.trabalho01_v2.model.PedidoItem;
 import ucs.android.aulas.trabalho01_v2.model.Produto;
 
 public class LancaItemActivity2 extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class LancaItemActivity2 extends AppCompatActivity {
     ArrayList<Produto> listaProdutos;
     ArrayList<Pedido> listaPedidos;
     ArrayList<Mesa> listaMesas;
+    ArrayList<PedidoItem> listaPedidoItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,15 +97,18 @@ public class LancaItemActivity2 extends AppCompatActivity {
                 BancoDados bd = BancoDados.getInstancia();
                 ArrayList<Pedido> listaPedidos = new ArrayList<>();
                 ArrayList<Mesa> listaMesa = new ArrayList<>();
-                Produto produto = new Produto(1, snomeproduto, "", fvalor, null, null, 0);
 
-                Pedido pedido = new Pedido(iIDPedido, false, produto);
+                PedidoItem pedidoitem = new PedidoItem(contador);
 
-                listaPedidos.add(new Pedido(iIDPedido, false, produto));
+                Produto produto = new Produto(1, snomeproduto, "", fvalor, null, null, 0,pedidoitem);
+                Mesa mesa = new Mesa(idMesa,true);
+                Pedido pedido = new Pedido(iIDPedido, false, produto, mesa);
+
+                listaPedidos.add(new Pedido(iIDPedido, false, produto, mesa));
 
                 bd.setPedido(pedido);
 
-                Mesa mesa = new Mesa(idMesa,true);
+
                 listaMesa.add(new Mesa(iIDPedido, true));
                 bd.setMesa(mesa);
                 finish();

@@ -14,15 +14,18 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import ucs.android.aulas.trabalho01_v2.adapter.MesasAdapter;
+import ucs.android.aulas.trabalho01_v2.adapter.ProdutosAdapter;
 import ucs.android.aulas.trabalho01_v2.databinding.FragmentFirst2Binding;
 import ucs.android.aulas.trabalho01_v2.banco.BancoDados;
 import ucs.android.aulas.trabalho01_v2.model.Mesa;
+import ucs.android.aulas.trabalho01_v2.model.Pedido;
+import ucs.android.aulas.trabalho01_v2.model.Produto;
 
 public class First2Fragment extends Fragment {
 
     private FragmentFirst2Binding binding;
     ArrayList<Mesa> listaMesas;
-
+    ArrayList<Pedido> listaPedidos;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -37,10 +40,39 @@ public class First2Fragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        listaMesas =   BancoDados.getInstancia().getAllMesas();
+        listaPedidos =   BancoDados.getInstancia().getAllPedidos();
 
-        //ListView lista = (ListView) findViewById(R.id.lvLivros);
+//        listaMesas.clear();
+//        for (Pedido p : listaPedidos) {
+//            if (p.getId() == id) {
+//                p.getPedidoProdutos(id);
+//                listaPedidos1.add(p.getPedidoProdutos(id));
+//            }
+//        }
+//
 
+
+
+
+//        if (listaPedidos.size() > 0){
+//            for (Pedido p : listaPedidos) {
+//                for (int i = 1; i <= 50; i++) {
+//                    if (p.getMesaid(i).getId() != i ) {
+//                        listaMesas.add(p.getMesaid(i));
+//                    }
+//
+//
+//
+//
+////                    if (p.getId() != i) {
+////                        p.getMesaid(i);
+////                        listaMesas.add(p.getMesaid(i));
+////                    }
+//                }
+//            }
+//        } else {
+            listaMesas =   BancoDados.getInstancia().getAllMesas();
+//        }
         ListView lista = binding.lvMesas;
 
         MesasAdapter adapter = new MesasAdapter(getContext(), listaMesas);

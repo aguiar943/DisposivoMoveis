@@ -18,6 +18,7 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
     private final Context context;
     private final ArrayList<Produto> elementos;
 
+
     public ProdutosAdapter(Context context, ArrayList<Produto> elementos) {
         super(context, R.layout.linhaproduto, elementos);
         this.context = context;
@@ -32,7 +33,7 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
         TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
 //        TextView valor = (TextView) rowView.findViewById(R.id.txtValor);
 //        TextView mesa = (TextView) rowView.findViewById(R.id.txtMesa);
-        nomeitem.setText((elementos.get(position).getNomeProduto()));
+        nomeitem.setText( (elementos.get(position).getNomeProduto() + " - " + Integer.toString(elementos.get(position).getpedidoitem().getId()) + " UN"));
 //        mesa.setText(Integer.toString(elementos.get(position).get()));
 
 

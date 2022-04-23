@@ -11,13 +11,14 @@ public class Produto implements Serializable {
     private Bebida bebida;
     private Prato prato;
     private int id_imagem;
+    private PedidoItem pedidoitem;
 
 
     public Produto() { }
 
 
 
-    public Produto(int id,String snomeproduto, String sdescricaoproduto, Float fpreco, Bebida bebida, Prato prato, int id_imagem) {
+    public Produto(int id,String snomeproduto, String sdescricaoproduto, Float fpreco, Bebida bebida, Prato prato, int id_imagem, PedidoItem pedidoitem) {
         super();
         this.id = id;
         this.snomeproduto = snomeproduto;
@@ -26,9 +27,10 @@ public class Produto implements Serializable {
         this.bebida = bebida;
         this.prato = prato;
         this.id_imagem = id_imagem;
+        this.pedidoitem = pedidoitem;
     }
 
-    public void setProduto(int id,String snomeproduto, String sdescricaoproduto, Float fpreco, Bebida bebida, Prato prato, int id_imagem) {
+    public void setProduto(int id,String snomeproduto, String sdescricaoproduto, Float fpreco, Bebida bebida, Prato prato, int id_imagem, PedidoItem pedidoitem) {
         this.id = id;
         this.snomeproduto = snomeproduto;
         this.sdescricaoproduto = sdescricaoproduto;
@@ -36,6 +38,7 @@ public class Produto implements Serializable {
         this.bebida = bebida;
         this.prato = prato;
         this.id_imagem = id_imagem;
+        this.pedidoitem = pedidoitem;
     }
 
     public int getId() {
@@ -93,6 +96,14 @@ public class Produto implements Serializable {
 
     public void setid_imagem(int id_imagem) {
         this.id_imagem = id_imagem;
+    }
+
+    public PedidoItem getpedidoitem() {
+        return pedidoitem;
+    }
+
+    public void setpedidoitem(int pedidoitem) {
+        this.id_imagem = pedidoitem;
     }
 
 }

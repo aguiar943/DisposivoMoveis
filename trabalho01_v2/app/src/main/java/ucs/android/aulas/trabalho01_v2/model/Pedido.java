@@ -1,24 +1,22 @@
 package ucs.android.aulas.trabalho01_v2.model;
 
-import android.widget.ArrayAdapter;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Pedido implements Serializable {
 
     private int id;
     private Boolean bpago;
     private Produto produto;
+    private Mesa mesa;
 
     public Pedido() { }
 
-    public Pedido(int id, boolean bpago, Produto produto) {
+    public Pedido(int id, boolean bpago, Produto produto, Mesa mesa) {
         super();
         this.id = id;
         this.bpago = bpago;
         this.produto = produto;
+        this.mesa = mesa;
     }
 
     public int getId() {
@@ -37,19 +35,27 @@ public class Pedido implements Serializable {
         this.bpago = bpago;
     }
 
-    public void setPedido(int id, boolean bpago, String snomeproduto, Produto produto){
+    public void setPedido(int id, boolean bpago, String snomeproduto, Produto produto, Mesa mesa){
         this.id = id;
         this.bpago = bpago;
         this.produto = produto;
+        this.mesa = mesa;
     }
 
     public Produto getPedidoProdutos(int nro) {
         return produto;
     }
 
+    public Mesa getMesaid(int nro) {
+        return mesa;
+    }
+
     public int getPedido(int nro) {
         return id;
     }
 
+    public int getPedidoMesas(){
+        return id;
+    }
 
 }

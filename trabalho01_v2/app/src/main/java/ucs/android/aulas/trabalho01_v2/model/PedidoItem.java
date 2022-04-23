@@ -6,7 +6,7 @@ public class PedidoItem {
 
     public PedidoItem() { }
 
-    public PedidoItem(int ido) {
+    public PedidoItem(int id) {
         super();
         this.id = id;
     }
