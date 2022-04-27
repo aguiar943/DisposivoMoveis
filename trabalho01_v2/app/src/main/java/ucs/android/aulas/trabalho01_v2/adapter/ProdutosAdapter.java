@@ -17,6 +17,7 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
 
     private final Context context;
     private final ArrayList<Produto> elementos;
+    private float rvalor;
 
 
     public ProdutosAdapter(Context context, ArrayList<Produto> elementos) {
@@ -31,16 +32,11 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhaproduto, parent, false);
         TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
-//        TextView valor = (TextView) rowView.findViewById(R.id.txtValor);
-//        TextView mesa = (TextView) rowView.findViewById(R.id.txtMesa);
-        nomeitem.setText( (elementos.get(position).getNomeProduto() + " - " + Integer.toString(elementos.get(position).getpedidoitem().getId()) + " UN"));
-//        mesa.setText(Integer.toString(elementos.get(position).get()));
-
-
-//        TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
-//        nomebebidas.setText((elementos.get(position).getNomeProduto()));
-
-
+        TextView precoproduto = (TextView) rowView.findViewById(R.id.txtPrecoProduto);
+        rvalor = elementos.get(position).getpedidoitem().getId() * elementos.get(position).getPrecoProduto() ;
+        nomeitem.setText(elementos.get(position).getNomeProduto());
+        precoproduto.setText( (Integer.toString(elementos.get(position).getpedidoitem().getId()) + " UN - ") +
+                "R$ " + String.format("%.2f", rvalor));
         return rowView;
     }
 }

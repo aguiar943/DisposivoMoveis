@@ -19,6 +19,7 @@ import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -32,9 +33,12 @@ public class AlteraPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_altera_pedido);
         Intent intent = getIntent();
+        TextView valortaxa = (TextView) findViewById(R.id.Tvtaxaservico);
         ListView lista = findViewById(R.id.lvItens);
         final int id = intent.getIntExtra("ID", 0);
-
+        float fvalor, fvalorunitario ;
+        fvalor = 0;
+        fvalorunitario = 0;
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
 
         ArrayList<Produto> listaPedidos1 = new ArrayList<>();
@@ -45,8 +49,12 @@ public class AlteraPedido extends AppCompatActivity {
             if (p.getId() == id) {
                 p.getPedidoProdutos(id);
                 listaPedidos1.add(p.getPedidoProdutos(id));
+                fvalorunitario = p.getPedidoProdutos(id).getpedidoitem().getId() * p.getPedidoProdutos(id).getPrecoProduto();
+                fvalor = fvalor +  (fvalorunitario * 10) / 100;
             }
         }
+        valortaxa.setText("TAXA DE SERVIÇO(10%): "  + String.format("%.2f", fvalor));
+
         ProdutosAdapter adapter = new ProdutosAdapter(getBaseContext(), listaPedidos1);
         lista.setAdapter(adapter);
     }
