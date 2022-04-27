@@ -60,8 +60,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Tvtaxaservico"
@@ -79,7 +79,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="69dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1">
 
                 <Button
@@ -88,13 +88,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Inserir" />
-
-                <Button
-                    android:id="@+id/button12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EXCLUIR ITEM" />
 
             </LinearLayout>
 

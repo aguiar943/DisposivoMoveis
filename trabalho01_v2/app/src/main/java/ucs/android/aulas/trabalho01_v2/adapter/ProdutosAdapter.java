@@ -25,6 +25,10 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
         this.context = context;
         this.elementos = elementos;
     }
+    public void removeProduto(int posicao){
+        this.elementos.remove(posicao);
+        notifyDataSetChanged();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -39,5 +43,7 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
                 "R$ " + String.format("%.2f", rvalor));
         return rowView;
     }
+
+
 }
 

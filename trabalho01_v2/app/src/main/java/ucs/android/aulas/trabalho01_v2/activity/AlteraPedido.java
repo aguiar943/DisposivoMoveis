@@ -1,6 +1,5 @@
 package ucs.android.aulas.trabalho01_v2.activity;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import ucs.android.aulas.trabalho01_v2.R;
 import ucs.android.aulas.trabalho01_v2.adapter.BebidasAdapter;
@@ -8,25 +7,33 @@ import ucs.android.aulas.trabalho01_v2.adapter.PedidosAdapter;
 import ucs.android.aulas.trabalho01_v2.adapter.ProdutosAdapter;
 import ucs.android.aulas.trabalho01_v2.banco.BancoDados;
 import ucs.android.aulas.trabalho01_v2.databinding.FragmentFirst2Binding;
+import ucs.android.aulas.trabalho01_v2.model.Mesa;
 import ucs.android.aulas.trabalho01_v2.model.Pedido;
+import ucs.android.aulas.trabalho01_v2.model.PedidoItem;
 import ucs.android.aulas.trabalho01_v2.model.Produto;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class AlteraPedido extends AppCompatActivity {
     ArrayList<Pedido> listaPedidos;
-
+    private int idaux;
+    private float fvalor, fvalorunitario ;
     ArrayList<Produto> listaProdutos;
+    ArrayList<Produto> listaPedidos1 = new ArrayList<>();
+
     private AlteraPedido binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +43,11 @@ public class AlteraPedido extends AppCompatActivity {
         TextView valortaxa = (TextView) findViewById(R.id.Tvtaxaservico);
         ListView lista = findViewById(R.id.lvItens);
         final int id = intent.getIntExtra("ID", 0);
-        float fvalor, fvalorunitario ;
+        idaux = id;
+
         fvalor = 0;
         fvalorunitario = 0;
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
-
-        ArrayList<Produto> listaPedidos1 = new ArrayList<>();
 
         listaPedidos1.clear();
 
@@ -57,5 +63,42 @@ public class AlteraPedido extends AppCompatActivity {
 
         ProdutosAdapter adapter = new ProdutosAdapter(getBaseContext(), listaPedidos1);
         lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                android.app.AlertDialog.Builder ConfirmaItem = new AlertDialog.Builder(AlteraPedido.this);
+                ConfirmaItem.setTitle("Atenção!");
+                ConfirmaItem.setMessage("Confirma lançamento do item?");
+                ConfirmaItem.setCancelable(false);
+                ConfirmaItem.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which ) {
+                        Toast.makeText(AlteraPedido.this, "Produto removido", Toast.LENGTH_SHORT).show();
+
+                        adapter.removeProduto(position);
+                        recalculatotais();
+                    }
+                });
+                ConfirmaItem.setNegativeButton("Não",null);
+                ConfirmaItem.create().show();
+            }
+        });
     }
+
+    public void recalculatotais(){
+        TextView valortaxa = (TextView) findViewById(R.id.Tvtaxaservico);
+        fvalor = 0;
+        fvalorunitario = 0;
+        for(Produto p : listaPedidos1)
+        {
+            fvalorunitario = p.getPrecoProduto() * p.getpedidoitem().getId();
+            fvalor = fvalor +  (fvalorunitario * 10) / 100;
+            valortaxa.setText("TAXA DE SERVIÇO(10%): "  + String.format("%.2f", fvalor));
+        }
+
+    }
+
 }
