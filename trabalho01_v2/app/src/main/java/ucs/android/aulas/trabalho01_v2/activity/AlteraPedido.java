@@ -28,7 +28,9 @@ import java.util.ArrayList;
 
 public class AlteraPedido extends AppCompatActivity {
     ArrayList<Pedido> listaPedidos;
-    private int idaux;
+    private int idMesa;
+    private  int id;
+    private boolean bpgto;
     private float fvalor, fvalorunitario, fvalorpago ;
     ArrayList<Produto> listaProdutos;
     ArrayList<Produto> listaPedidos1 = new ArrayList<>();
@@ -41,14 +43,13 @@ public class AlteraPedido extends AppCompatActivity {
         Intent intent = getIntent();
         TextView valortaxa = (TextView) findViewById(R.id.Tvtaxaservico);
         ListView lista = findViewById(R.id.lvItens);
-        final int id = intent.getIntExtra("ID", 0);
-        idaux = id;
-
+        id = intent.getIntExtra("ID", 0);
+        idMesa = intent.getIntExtra("IDMesa", 0);
         fvalor = 0;
         fvalorpago = 0;
         fvalorunitario = 0;
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
-
+        bpgto = false;
         listaPedidos1.clear();
 
         for (Pedido p : listaPedidos) {
@@ -108,12 +109,25 @@ public class AlteraPedido extends AppCompatActivity {
         switch (view.getId()) {
             case (R.id.btnpgtosg):
                 fvalorpago -= fvalor;
+                bpgto = true;
                 break;
             case (R.id.btnpgtocg):
                 fvalorpago  +=  fvalor;
+                bpgto = true;
+                break;
+            case (R.id.btninseriritem):
+                Intent intent = new Intent(AlteraPedido.this, Produto1Activity.class);
+                intent.putExtra("IDMesa", idMesa);
+                intent.putExtra("IDPedido", id);
+                intent.putExtra("PegaInicio", false);
+                startActivity(intent);
+                startActivity(intent);
                 break;
         }
-        mostraAlerta();
+        if (bpgto) {
+            mostraAlerta();
+        }
+
     }
 
     private void mostraAlerta() {
@@ -126,7 +140,7 @@ public class AlteraPedido extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which ) {
                 Toast.makeText(AlteraPedido.this, "Pagamento efetuado", Toast.LENGTH_SHORT).show();
 
-                listaPedidos =  BancoDados.getInstancia().getRemovePedido(idaux);
+                listaPedidos =  BancoDados.getInstancia().getRemovePedido(id);
                 finish();
             }
         });

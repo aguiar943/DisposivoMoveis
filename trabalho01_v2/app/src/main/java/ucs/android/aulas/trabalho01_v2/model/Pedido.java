@@ -46,7 +46,7 @@ public class Pedido implements Serializable {
         return produto;
     }
 
-    public Mesa getMesaid(int nro) {
+    public Mesa getMesaid() {
         return mesa;
     }
 

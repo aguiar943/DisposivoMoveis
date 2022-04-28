@@ -51,6 +51,7 @@ public class FirstFragment extends Fragment {
                                     int position, long id) {
                 Intent intent = new Intent(getContext(), AlteraPedido.class);
                 intent.putExtra("ID", listaPedidos.get(position).getId());
+                intent.putExtra("IDMesa", listaPedidos.get(position).getMesaid().getId());
                 startActivity(intent);
             }
         });

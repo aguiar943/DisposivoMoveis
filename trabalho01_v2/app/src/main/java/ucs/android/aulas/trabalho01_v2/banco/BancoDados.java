@@ -93,8 +93,6 @@ public class BancoDados {
         return listaPedidos;
     }
 
-
-
     public ArrayList<Pedido> getPedidos() {
         ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
         int iaux = -1;

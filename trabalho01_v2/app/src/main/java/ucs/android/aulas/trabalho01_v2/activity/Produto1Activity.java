@@ -39,13 +39,14 @@ public class Produto1Activity extends AppCompatActivity {
         binicio = intent.getBooleanExtra("PegaInicio",true);
         listaPedidos = BancoDados.getInstancia().getAllPedidosCT();
 
-        if (listaPedidos.size() > 0 ){
-            for (Pedido p : listaPedidos) {
-                iIDPedido = p.getId();
+        if (binicio) {
+            if (listaPedidos.size() > 0) {
+                for (Pedido p : listaPedidos) {
+                    iIDPedido = p.getId();
+                }
+            } else {
+                iIDPedido = 0;
             }
-        } else
-        {
-            iIDPedido = 0;
         }
 
         iIDPedido++;
