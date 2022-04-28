@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class AlteraPedido extends AppCompatActivity {
     ArrayList<Pedido> listaPedidos;
     private int idaux;
-    private float fvalor, fvalorunitario ;
+    private float fvalor, fvalorunitario, fvalorpago ;
     ArrayList<Produto> listaProdutos;
     ArrayList<Produto> listaPedidos1 = new ArrayList<>();
 
@@ -45,6 +45,7 @@ public class AlteraPedido extends AppCompatActivity {
         idaux = id;
 
         fvalor = 0;
+        fvalorpago = 0;
         fvalorunitario = 0;
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
 
@@ -55,6 +56,7 @@ public class AlteraPedido extends AppCompatActivity {
                 p.getPedidoProdutos(id);
                 listaPedidos1.add(p.getPedidoProdutos(id));
                 fvalorunitario = p.getPedidoProdutos(id).getpedidoitem().getId() * p.getPedidoProdutos(id).getPrecoProduto();
+                fvalorpago += fvalorunitario;
                 fvalor = fvalor +  (fvalorunitario * 10) / 100;
             }
         }
@@ -91,9 +93,11 @@ public class AlteraPedido extends AppCompatActivity {
         TextView valortaxa = (TextView) findViewById(R.id.Tvtaxaservico);
         fvalor = 0;
         fvalorunitario = 0;
+        fvalorpago = 0;
         for(Produto p : listaPedidos1)
         {
             fvalorunitario = p.getPrecoProduto() * p.getpedidoitem().getId();
+            fvalorpago += fvalorunitario;
             fvalor = fvalor +  (fvalorunitario * 10) / 100;
             valortaxa.setText("TAXA DE SERVIÇO(10%): "  + String.format("%.2f", fvalor));
         }
@@ -103,17 +107,31 @@ public class AlteraPedido extends AppCompatActivity {
     public void finaliza(View view) {
         switch (view.getId()) {
             case (R.id.btnpgtosg):
+                fvalorpago -= fvalor;
                 break;
             case (R.id.btnpgtocg):
-
+                fvalorpago  +=  fvalor;
                 break;
-
-
         }
-        listaPedidos =  BancoDados.getInstancia().getRemovePedido(idaux);
+        mostraAlerta();
+    }
 
+    private void mostraAlerta() {
+        AlertDialog.Builder ConfirmaItem = new AlertDialog.Builder(AlteraPedido.this);
+        ConfirmaItem.setTitle("Atenção!");
+        ConfirmaItem.setMessage("Confirma pagamento de R$ " + String.format("%.2f", fvalorpago)  + "?");
+        ConfirmaItem.setCancelable(false);
+        ConfirmaItem.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which ) {
+                Toast.makeText(AlteraPedido.this, "Pagamento efetuado", Toast.LENGTH_SHORT).show();
 
-        finish();
+                listaPedidos =  BancoDados.getInstancia().getRemovePedido(idaux);
+                finish();
+            }
+        });
+        ConfirmaItem.setNegativeButton("Não",null);
+        ConfirmaItem.create().show();
     }
 
 }
