@@ -6,7 +6,6 @@ import ucs.android.aulas.trabalho01_v2.adapter.BebidasAdapter;
 import ucs.android.aulas.trabalho01_v2.adapter.PedidosAdapter;
 import ucs.android.aulas.trabalho01_v2.adapter.ProdutosAdapter;
 import ucs.android.aulas.trabalho01_v2.banco.BancoDados;
-import ucs.android.aulas.trabalho01_v2.databinding.FragmentFirst2Binding;
 import ucs.android.aulas.trabalho01_v2.model.Mesa;
 import ucs.android.aulas.trabalho01_v2.model.Pedido;
 import ucs.android.aulas.trabalho01_v2.model.PedidoItem;
@@ -71,7 +70,7 @@ public class AlteraPedido extends AppCompatActivity {
 
                 android.app.AlertDialog.Builder ConfirmaItem = new AlertDialog.Builder(AlteraPedido.this);
                 ConfirmaItem.setTitle("Atenção!");
-                ConfirmaItem.setMessage("Confirma lançamento do item?");
+                ConfirmaItem.setMessage("Confirma exclusão do item?");
                 ConfirmaItem.setCancelable(false);
                 ConfirmaItem.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
