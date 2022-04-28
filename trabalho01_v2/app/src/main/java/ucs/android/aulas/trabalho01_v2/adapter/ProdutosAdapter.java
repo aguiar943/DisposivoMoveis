@@ -37,8 +37,10 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
         View rowView = inflater.inflate(R.layout.linhaproduto, parent, false);
         TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
         TextView precoproduto = (TextView) rowView.findViewById(R.id.txtPrecoProduto);
+        TextView excluir = (TextView) rowView.findViewById(R.id.tvexcluir);
         rvalor = elementos.get(position).getpedidoitem().getId() * elementos.get(position).getPrecoProduto() ;
         nomeitem.setText(elementos.get(position).getNomeProduto());
+        excluir.setText("Excluir");
         precoproduto.setText( (Integer.toString(elementos.get(position).getpedidoitem().getId()) + " UN - ") +
                 "R$ " + String.format("%.2f", rvalor));
         return rowView;
