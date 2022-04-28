@@ -53,6 +53,9 @@ public class Pedido implements Serializable {
     public int getPedido(int nro) {
         return id;
     }
+    public int getPedidoNro() {
+        return id;
+    }
 
     public int getPedidoMesas(){
         return id;

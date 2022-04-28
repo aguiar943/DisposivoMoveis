@@ -100,4 +100,20 @@ public class AlteraPedido extends AppCompatActivity {
 
     }
 
+    public void finaliza(View view) {
+        switch (view.getId()) {
+            case (R.id.btnpgtosg):
+                break;
+            case (R.id.btnpgtocg):
+
+                break;
+
+
+        }
+        listaPedidos =  BancoDados.getInstancia().getRemovePedido(idaux);
+
+
+        finish();
+    }
+
 }

@@ -24,6 +24,7 @@ public class PedidosAdapter extends ArrayAdapter<Pedido> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        notifyDataSetChanged();
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhapedido, parent, false);

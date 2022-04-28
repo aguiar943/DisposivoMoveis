@@ -73,12 +73,32 @@ public class BancoDados {
     public ArrayList<Pedido> getAllPedidos() {
         ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
         for (Pedido p : pedidoslista) {
-            listaPedidos.add(p);
+            if (p.getBpago() == false) {
+                listaPedidos.add(p);
+            }
+
         }
         return listaPedidos;
     }
 
+    public ArrayList<Pedido> getAllPedidosCT() {
+        ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
+        for (Pedido p : pedidoslista) {
+                listaPedidos.add(p);
+        }
+        return listaPedidos;
+    }
 
+    public ArrayList<Pedido> getRemovePedido(int nro) {
+        ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
+        for (Pedido p : pedidoslista) {
+            if (p.getId() == nro){
+                p.setBpago(true);
+//                listaPedidos.remove(p);
+            }
+        }
+        return listaPedidos;
+    }
 
     public ArrayList<Pedido> getPedidos() {
         ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
@@ -86,7 +106,9 @@ public class BancoDados {
         for (Pedido p : pedidoslista) {
             if (iaux == p.getId()) {
             } else {
-                listaPedidos.add(p);
+                if (p.getBpago() == false) {
+                    listaPedidos.add(p);
+                }
             }
             iaux = (p.getId());
         }

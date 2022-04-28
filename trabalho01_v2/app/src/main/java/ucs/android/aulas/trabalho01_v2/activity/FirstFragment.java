@@ -39,22 +39,18 @@ public class FirstFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        listaPedidos = BancoDados.getInstancia().getPedidos();
+       listaPedidos = BancoDados.getInstancia().getPedidos();
 
         ListView lista = binding.lvPedidos;
 
         PedidosAdapter adapter = new PedidosAdapter(getContext(), listaPedidos);
         lista.setAdapter(adapter);
-
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(getContext(), AlteraPedido.class);
                 intent.putExtra("ID", listaPedidos.get(position).getId());
-
-//                intent.putExtra("LivroCorrente", listaPedidos.get(position) );
-
                 startActivity(intent);
             }
         });
