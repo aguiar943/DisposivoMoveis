@@ -42,37 +42,8 @@ public class First2Fragment extends Fragment {
 
         listaPedidos =   BancoDados.getInstancia().getAllPedidos();
 
-//        listaMesas.clear();
-//        for (Pedido p : listaPedidos) {
-//            if (p.getId() == id) {
-//                p.getPedidoProdutos(id);
-//                listaPedidos1.add(p.getPedidoProdutos(id));
-//            }
-//        }
-//
+        listaMesas =   BancoDados.getInstancia().getAllMesas();
 
-
-
-
-//        if (listaPedidos.size() > 0){
-//            for (Pedido p : listaPedidos) {
-//                for (int i = 1; i <= 50; i++) {
-//                    if (p.getMesaid(i).getId() != i ) {
-//                        listaMesas.add(p.getMesaid(i));
-//                    }
-//
-//
-//
-//
-////                    if (p.getId() != i) {
-////                        p.getMesaid(i);
-////                        listaMesas.add(p.getMesaid(i));
-////                    }
-//                }
-//            }
-//        } else {
-            listaMesas =   BancoDados.getInstancia().getAllMesas();
-//        }
         ListView lista = binding.lvMesas;
 
         MesasAdapter adapter = new MesasAdapter(getContext(), listaMesas);
@@ -93,13 +64,6 @@ public class First2Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(First2Fragment.this)
-//                        .navigate(R.id.action_First2Fragment_to_SecondFragment);
-//            }
-//        });
     }
 
     @Override

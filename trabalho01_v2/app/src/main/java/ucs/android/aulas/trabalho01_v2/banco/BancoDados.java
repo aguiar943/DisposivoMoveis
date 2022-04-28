@@ -64,12 +64,6 @@ public class BancoDados {
         this.mesaslista.add(mesa);
     }
 
-    private Pedido cursorToPedido(Cursor cursor) {
-        Pedido pedido = new Pedido();
-        pedido.setId(Integer.parseInt(cursor.getString(0)));
-        return pedido;
-    }
-
     public ArrayList<Pedido> getAllPedidos() {
         ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
         for (Pedido p : pedidoslista) {
@@ -94,11 +88,12 @@ public class BancoDados {
         for (Pedido p : pedidoslista) {
             if (p.getId() == nro){
                 p.setBpago(true);
-//                listaPedidos.remove(p);
             }
         }
         return listaPedidos;
     }
+
+
 
     public ArrayList<Pedido> getPedidos() {
         ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
@@ -123,12 +118,6 @@ public class BancoDados {
             }
         }
         return pedidoslista;
-    }
-
-    private Mesa cursorToMesa(Cursor cursor) {
-        Mesa mesa = new Mesa();
-        mesa.setId(Integer.parseInt(cursor.getString(0)));
-        return mesa;
     }
 
     public ArrayList<Mesa> getAllMesas() {

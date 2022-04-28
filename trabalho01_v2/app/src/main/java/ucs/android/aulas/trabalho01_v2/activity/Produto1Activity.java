@@ -37,15 +37,12 @@ public class Produto1Activity extends AppCompatActivity {
         TextView tvResp1 = findViewById(R.id.tvpedido);
         Intent intent = getIntent();
         binicio = intent.getBooleanExtra("PegaInicio",true);
-
-
         listaPedidos = BancoDados.getInstancia().getAllPedidosCT();
 
         if (listaPedidos.size() > 0 ){
             for (Pedido p : listaPedidos) {
                 iIDPedido = p.getId();
             }
-//            iIDPedido = listaPedidos.size();
         } else
         {
             iIDPedido = 0;
@@ -64,9 +61,6 @@ public class Produto1Activity extends AppCompatActivity {
             case (R.id.BtnBebidas):
                 listaProdutos =   BancoDados.getInstancia().getAllProdutosBebidas("B");
 
-//                BebidasAdapter adapter = new BebidasAdapter(getBaseContext(), listaProdutos);
-//                lista.setAdapter(adapter);
-
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
@@ -84,8 +78,6 @@ public class Produto1Activity extends AppCompatActivity {
                 break;
             case (R.id.BtnComida):
                 listaProdutos =   BancoDados.getInstancia().getAllProdutosBebidas("C");
-//                BebidasAdapter adapter1 = new BebidasAdapter(getBaseContext(), listaProdutos);
-//                lista.setAdapter(adapter1);
 
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

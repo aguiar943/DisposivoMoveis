@@ -108,7 +108,6 @@ public class LancaItemActivity2 extends AppCompatActivity {
 
                 bd.setPedido(pedido);
 
-
                 listaMesa.add(new Mesa(iIDPedido, true));
                 bd.setMesa(mesa);
                 finish();

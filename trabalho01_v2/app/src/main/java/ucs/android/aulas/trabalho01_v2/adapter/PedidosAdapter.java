@@ -29,15 +29,7 @@ public class PedidosAdapter extends ArrayAdapter<Pedido> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhapedido, parent, false);
         TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomePedido);
-//        TextView valor = (TextView) rowView.findViewById(R.id.txtValor);
-//        TextView mesa = (TextView) rowView.findViewById(R.id.txtMesa);
         nomeitem.setText(Integer.toString(elementos.get(position).getId()));
-//        mesa.setText(Integer.toString(elementos.get(position).get()));
-
-
-//        TextView nomeitem = (TextView) rowView.findViewById(R.id.txtNomeItem);
-//        nomebebidas.setText((elementos.get(position).getNomeProduto()));
-
 
         return rowView;
     }
