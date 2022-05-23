@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import ucs.android.aulas.trabalho02.R;
+import ucs.android.aulas.trabalho02.model.Example;
+
 public class adapterPost extends RecyclerView.Adapter<adapterPost.PostViewHolder> {
     private List<Example> examples;
     private int rowLayout;
     private Context context;
-
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         LinearLayout postsLayout;
@@ -51,10 +53,10 @@ public class adapterPost extends RecyclerView.Adapter<adapterPost.PostViewHolder
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, final int position) {
-        holder.userId.setText(posts.get(position).getTitle());
-        holder.id.setText(posts.get(position).getTitle());
-        holder.title.setText(posts.get(position).getTitle());
-        holder.body.setText(posts.get(position).getTitle());
+        holder.userId.setText(examples.get(position).getId());
+        holder.id.setText(examples.get(position).getName());
+        holder.title.setText(examples.get(position).getName());
+        holder.body.setText(examples.get(position).getPowerstats().getCombat());
     }
 
     @Override

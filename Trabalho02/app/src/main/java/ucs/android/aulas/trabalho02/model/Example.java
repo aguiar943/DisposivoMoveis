@@ -39,4 +39,11 @@ public void setPowerstats(Powerstats powerstats) {
 this.powerstats = powerstats;
 }
 
+public Example(String id, String name, Powerstats powerstats) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.powerstats = powerstats;
+}
+
 }
