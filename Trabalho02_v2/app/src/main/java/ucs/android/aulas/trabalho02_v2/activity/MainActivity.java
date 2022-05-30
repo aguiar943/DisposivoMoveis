@@ -5,8 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -25,27 +29,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        TextView conexao = (TextView) findViewById(R.id.TvConexao);
 
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if (isOnline()) {
+            conexao.setTextColor(getResources().getColor(R.color.colorGreenC));
+            conexao.setText("CONECTADO");
 
-        AppInterface service = ApiClient.getClient().create(AppInterface.class);
+            final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Call<List<Json>> callUsers = service.json();
-        callUsers.enqueue(new Callback<List<Json>>() {
-            @Override
-            public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
-                int statusCode = response.code();
-                List<Json> json = response.body();
-                recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
-            }
+            AppInterface service = ApiClient.getClient().create(AppInterface.class);
 
-            @Override
-            public void onFailure(Call<List<Json>> call, Throwable t) {
-                mostraAlerta("Erro", t.toString());
-                // Log error here since request faile;
-            }
-        });
+            Call<List<Json>> callUsers = service.json();
+            callUsers.enqueue(new Callback<List<Json>>() {
+                @Override
+                public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
+                    int statusCode = response.code();
+                    List<Json> json = response.body();
+                    recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
+                }
+
+                @Override
+                public void onFailure(Call<List<Json>> call, Throwable t) {
+                    mostraAlerta("Erro", t.toString());
+                    // Log error here since request faile;
+                }
+            });
+    } else
+        {
+            conexao.setTextColor(getResources().getColor(R.color.colorRedD));
+            conexao.setText("DESCONECTADO");
+        }
     }
 
     private void mostraAlerta(String titulo, String mensagem) {
@@ -61,5 +76,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return manager.getActiveNetworkInfo() != null &&
+                manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 }
