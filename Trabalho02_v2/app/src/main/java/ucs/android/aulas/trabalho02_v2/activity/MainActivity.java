@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
 
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         if (isOnline()) {
+            Toast.makeText(MainActivity.this, "Conectado com sucesso..", Toast.LENGTH_SHORT).show();
             conexao.setTextColor(getResources().getColor(R.color.colorGreenC));
             conexao.setText("CONECTADO");
 
-            final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             AppInterface service = ApiClient.getClient().create(AppInterface.class);
 
@@ -58,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
             });
     } else
         {
+            Toast.makeText(MainActivity.this, "Não foi possível conectar..", Toast.LENGTH_SHORT).show();
             conexao.setTextColor(getResources().getColor(R.color.colorRedD));
-            conexao.setText("DESCONECTADO");
+            conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
         }
     }
 
