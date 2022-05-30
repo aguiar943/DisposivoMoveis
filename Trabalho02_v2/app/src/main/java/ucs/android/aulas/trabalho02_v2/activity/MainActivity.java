@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
