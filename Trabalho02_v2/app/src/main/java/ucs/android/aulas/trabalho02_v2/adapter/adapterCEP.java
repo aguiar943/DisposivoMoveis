@@ -22,19 +22,21 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         LinearLayout postsLayout;
-        TextView id;
-        TextView userId;
-        TextView title;
-        TextView body;
+        TextView VarCep;
+        TextView VarBairro;
+        TextView VarLogradouro;
+        TextView VarUF;
+//        TextView VarIBGE;
 
 
         public PostViewHolder(View v) {
             super(v);
             postsLayout = (LinearLayout) v.findViewById(R.id.idcep);
-            userId = (TextView) v.findViewById(R.id.userId);
-            id = (TextView) v.findViewById(R.id.id);
-            title = (TextView) v.findViewById(R.id.title);
-            body = (TextView) v.findViewById(R.id.body);
+            VarCep = (TextView) v.findViewById(R.id.tvcep);
+            VarBairro = (TextView) v.findViewById(R.id.tvbairro);
+            VarLogradouro = (TextView) v.findViewById(R.id.tvlogradouro);
+            VarUF = (TextView) v.findViewById(R.id.tvuf);
+//            VarIBGE = (TextView) v.findViewById(R.id.tvibge);
         }
     }
 
@@ -54,10 +56,11 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, final int position) {
-        holder.userId.setText(json.get(position).getCep());
-        holder.id.setText(json.get(position).getBairro());
-        holder.title.setText(json.get(position).getLogradouro());
-        holder.body.setText(json.get(position).getUf());
+        holder.VarCep.setText(json.get(position).getCep());
+        holder.VarBairro.setText(json.get(position).getBairro());
+        holder.VarLogradouro.setText(json.get(position).getLogradouro());
+        holder.VarUF.setText(json.get(position).getUf());
+//        holder.VarIBGE.setText(json.get(position).getIbge());
     }
 
     @Override

@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/userId"
+            android:id="@+id/tvcep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -23,14 +23,14 @@
 
 
         <TextView
-            android:id="@+id/id"
+            android:id="@+id/tvbairro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="16dp"
             android:textColor="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tvlogradouro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="3"
@@ -38,7 +38,7 @@
             android:textColor="@color/colorGreyLight" />
 
         <TextView
-            android:id="@+id/body"
+            android:id="@+id/tvuf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="3"
@@ -46,7 +46,7 @@
             android:textColor="@color/colorGreyLight" />
 
         <TextView
-            android:id="@+id/body2"
+            android:id="@+id/tvibge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="3"
