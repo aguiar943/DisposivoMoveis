@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private BDSQLiteHelper bd;
     ArrayList<Json> listaCeps;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
