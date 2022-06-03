@@ -1,17 +1,20 @@
 package ucs.android.aulas.trabalho02_v2.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ucs.android.aulas.trabalho02_v2.R;
+import ucs.android.aulas.trabalho02_v2.activity.MainActivity_altera_cep;
 import ucs.android.aulas.trabalho02_v2.model.Json;
 
 public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>{
@@ -55,12 +58,21 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
 
 
     @Override
-    public void onBindViewHolder(PostViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
         holder.VarCep.setText(json.get(position).getCep());
         holder.VarBairro.setText(json.get(position).getBairro());
         holder.VarLogradouro.setText(json.get(position).getLogradouro());
         holder.VarUF.setText(json.get(position).getUf());
 //        holder.VarIBGE.setText(json.get(position).getIbge());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context , MainActivity_altera_cep.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
