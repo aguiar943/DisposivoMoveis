@@ -63,8 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Complemento"
-                    android:inputType="none"
-                    android:maxLength="2" />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -82,7 +81,7 @@
                         android:layout_height="match_parent"
                         android:hint="IBGE"
                         android:inputType="number|textPostalAddress"
-                        android:maxLength="2" />
+                        android:maxLength="7" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -102,7 +101,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="330dp">
 
                 <Button
                     android:id="@+id/BtnSalvar"
@@ -110,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#4CAF50"
+                    android:onClick="AcaoBotao"
                     android:text="Salvar" />
 
                 <Space
@@ -123,7 +123,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#FF0000"
+                    android:onClick="AcaoBotao"
                     android:text="Cancelar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/BtnRemover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#201E1E"
+                    android:onClick="AcaoBotao"
+                    android:text="Remover" />
             </LinearLayout>
 
         </LinearLayout>
