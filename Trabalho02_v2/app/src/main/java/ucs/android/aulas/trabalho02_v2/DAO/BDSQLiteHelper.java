@@ -82,9 +82,9 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
 
     private Json cursorToCeps(Cursor cursor) {
         Json ceps = new Json();
-        ceps.setCep(cursor.getString(0));
-        ceps.setLogradouro(cursor.getString(1));
-        ceps.setComplemento(cursor.getString(2));
+        ceps.setCep(cursor.getString(1));
+        ceps.setLogradouro(cursor.getString(2));
+        ceps.setComplemento(cursor.getString(3));
         ceps.setBairro(cursor.getString(4));
         ceps.setLocalidade(cursor.getString(5));
         ceps.setUf(cursor.getString(6));
