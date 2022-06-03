@@ -1,5 +1,6 @@
 package ucs.android.aulas.trabalho02_v2.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -29,7 +30,8 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
         TextView VarBairro;
         TextView VarLogradouro;
         TextView VarUF;
-//        TextView VarIBGE;
+        TextView VarIBGE;
+        TextView VarComplemento;
 
 
         public PostViewHolder(View v) {
@@ -39,7 +41,8 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
             VarBairro = (TextView) v.findViewById(R.id.tvbairro);
             VarLogradouro = (TextView) v.findViewById(R.id.tvlogradouro);
             VarUF = (TextView) v.findViewById(R.id.tvuf);
-//            VarIBGE = (TextView) v.findViewById(R.id.tvibge);
+            VarIBGE = (TextView) v.findViewById(R.id.tvibge);
+            VarComplemento = (TextView) v.findViewById(R.id.tvcomplemento);
         }
     }
 
@@ -58,20 +61,21 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
 
 
     @Override
-    public void onBindViewHolder(@NonNull final PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PostViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.VarCep.setText(json.get(position).getCep());
         holder.VarBairro.setText(json.get(position).getBairro());
         holder.VarLogradouro.setText(json.get(position).getLogradouro());
         holder.VarUF.setText(json.get(position).getUf());
-//        holder.VarIBGE.setText(json.get(position).getIbge());
-
-
+        holder.VarIBGE.setText(json.get(position).getIbge());
+        holder.VarComplemento.setText(json.get(position).getComplemento());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context , MainActivity_altera_cep.class);
+                intent.putExtra("CODIGOCEP", json.get(position).getCep());
+
                 context.startActivity(intent);
             }
         });

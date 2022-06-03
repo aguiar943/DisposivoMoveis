@@ -63,7 +63,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Json getCeps(Json cep) {
+    public Json getCeps(String cep) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABELA_CEP, COLUNAS, "cep = ?",
                 new String[]{String.valueOf(cep)},
