@@ -122,12 +122,14 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public int deleteCeps(Json ceps) {
+    public int LimpaCeps(Json ceps) {
+
         SQLiteDatabase db = this.getWritableDatabase();
-        int i = db.delete(TABELA_CEP, CEP + " = ?",
-                new String[]
-                        {String.valueOf(ceps.getCep())});
+
+        int i = db.delete(TABELA_CEP, null, null);
         db.close();
+//        db.execSQL(" DELETE FROM `sqlite_sequence` WHERE `name` = " + TABELA_CEP);
+//        db.close();
         return i;
     }
 }

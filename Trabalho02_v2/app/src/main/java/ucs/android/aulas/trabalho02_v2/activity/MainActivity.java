@@ -60,11 +60,34 @@ public class MainActivity extends AppCompatActivity {
             AppInterface service = ApiClient.getClient().create(AppInterface.class);
 
             Call<List<Json>> callUsers = service.json();
+
+//            jsons.setComplemento(Integer.parseInt(ano.getText().toString()));
+
+
+
             callUsers.enqueue(new Callback<List<Json>>() {
                 @Override
                 public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
                     int statusCode = response.code();
                     List<Json> json = response.body();
+                    Json jsons1 = new Json();
+                    bd.LimpaCeps(jsons1);
+
+                    for(int i = 1; i < json.size(); i++)
+                    {
+                        Json jsons = new Json();
+                        jsons.setCep(json.get(i).getCep());
+                        jsons.setBairro(json.get(i).getBairro());
+                        jsons.setComplemento(json.get(i).getComplemento());
+                        jsons.setIbge(json.get(i).getIbge());
+                        jsons.setLogradouro(json.get(i).getLogradouro());
+                        jsons.setUf(json.get(i).getUf());
+                        jsons.setLocalidade(json.get(i).getLocalidade());
+
+                        bd.addCep(jsons);
+//                        listaPessoas.get(i).fazerAlgumaCoisa();
+                    }
+
                     recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
                 }
 
@@ -81,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     private void criarConexao() {
         try {
             bd = new BDSQLiteHelper(this);
@@ -92,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         }
     }
-
     private void mostraAlerta(String titulo, String mensagem) {
         AlertDialog alertDialog = new
                 AlertDialog.Builder(MainActivity.this).create();
@@ -114,6 +135,4 @@ public class MainActivity extends AppCompatActivity {
         return manager.getActiveNetworkInfo() != null &&
                 manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
-
-
 }

@@ -65,6 +65,8 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
         holder.VarUF.setText(json.get(position).getUf());
 //        holder.VarIBGE.setText(json.get(position).getIbge());
 
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
