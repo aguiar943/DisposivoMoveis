@@ -17,13 +17,14 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 
 public class MainActivity_altera_cep extends AppCompatActivity {
     private BDSQLiteHelper bd;
+    private  String CodigoCep;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_altera_cep);
 
         Intent intent = getIntent();
-        final String CodigoCep = intent.getStringExtra("CODIGOCEP");
+        CodigoCep = intent.getStringExtra("CODIGOCEP");
         bd = new BDSQLiteHelper(this);
         Json json = bd.getCeps(CodigoCep);
 
@@ -66,8 +67,13 @@ public class MainActivity_altera_cep extends AppCompatActivity {
         ConfirmaItem.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which ) {
+                Json json = new Json();
+                json.setCep(CodigoCep);
+                bd.deletaCep(json);
                 Toast.makeText(MainActivity_altera_cep.this, "CEP removido", Toast.LENGTH_SHORT).show();
-                finish();
+
+                Intent intent1 = new Intent(MainActivity_altera_cep.this, MainActivity.class);
+                startActivity(intent1);
             }
         });
         ConfirmaItem.setNegativeButton("Não",null);
