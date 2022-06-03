@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:hint="CEP"
                     android:inputType="number|textPostalAddress"
-                    android:maxLength="8" />
+                    android:maxLength="9" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

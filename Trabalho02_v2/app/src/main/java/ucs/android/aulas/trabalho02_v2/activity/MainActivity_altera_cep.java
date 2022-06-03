@@ -18,6 +18,7 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 public class MainActivity_altera_cep extends AppCompatActivity {
     private BDSQLiteHelper bd;
     private  String CodigoCep;
+    private  EditText cep, logradouro, complemento, bairro, uf, ibge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +29,12 @@ public class MainActivity_altera_cep extends AppCompatActivity {
         bd = new BDSQLiteHelper(this);
         Json json = bd.getCeps(CodigoCep);
 
-        final EditText cep         = (EditText) findViewById(R.id.TvEdtCep);
-        final EditText logradouro  = (EditText) findViewById(R.id.TvEdtLogradouro);
-        final EditText complemento = (EditText) findViewById(R.id.TvEdtComplemento);
-        final EditText bairro      = (EditText) findViewById(R.id.TvEdtBairro);
-        final EditText uf          = (EditText) findViewById(R.id.TvEdtUF);
-        final EditText ibge        = (EditText) findViewById(R.id.TvEdtIBGE);
+        cep         = (EditText) findViewById(R.id.TvEdtCep);
+        logradouro  = (EditText) findViewById(R.id.TvEdtLogradouro);
+        complemento = (EditText) findViewById(R.id.TvEdtComplemento);
+        bairro      = (EditText) findViewById(R.id.TvEdtBairro);
+        uf          = (EditText) findViewById(R.id.TvEdtUF);
+        ibge        = (EditText) findViewById(R.id.TvEdtIBGE);
 
         cep.setText(json.getCep());
         logradouro.setText(json.getLogradouro());
@@ -47,11 +48,10 @@ public class MainActivity_altera_cep extends AppCompatActivity {
     public void AcaoBotao(View view){
         switch (view.getId()) {
             case (R.id.BtnSalvar):
-                Toast.makeText(this, "Salvar", Toast.LENGTH_SHORT).show();
+                AlteraCep();
                 break;
             case (R.id.BtnCancelar):
                 finish();
-                Toast.makeText(this, "Cancelar", Toast.LENGTH_SHORT).show();
                 break;
             case (R.id.BtnRemover):
                 mostraAlerta();
@@ -78,5 +78,22 @@ public class MainActivity_altera_cep extends AppCompatActivity {
         });
         ConfirmaItem.setNegativeButton("Não",null);
         ConfirmaItem.create().show();
+    }
+
+    private void AlteraCep(){
+        Json json = new Json();
+        json.setCep(CodigoCep);
+
+        json.setCep(cep.getText().toString());
+        json.setLogradouro(logradouro.getText().toString());
+        json.setComplemento(complemento.getText().toString());
+        json.setBairro(bairro.getText().toString());
+        json.setUf(uf.getText().toString());
+        json.setIbge(ibge.getText().toString());
+
+        bd.updateCeps(json);
+
+        Intent intent1 = new Intent(MainActivity_altera_cep.this, MainActivity.class);
+        startActivity(intent1);
     }
 }

@@ -109,14 +109,14 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
     public int updateCeps(Json ceps) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(CEP, ceps.getCep());
         values.put(LOGRADOURO, ceps.getLogradouro());
         values.put(COMPLEMENTO, ceps.getComplemento());
         values.put(BAIRRO, ceps.getBairro());
         values.put(LOCALIDADE, ceps.getLocalidade());
         values.put(UF, ceps.getUf());
         values.put(IBGE, ceps.getIbge());
-        int i = db.update(TABELA_CEP, values, CEP + " = ?",
+        int i = db.update(TABELA_CEP, values,
+                CEP + " = ?",
                 new String[]{String.valueOf(ceps.getCep())});
         db.close();
         return i;
