@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ucs.android.aulas.trabalho02_v2.DAO.BDSQLiteHelper;
 import ucs.android.aulas.trabalho02_v2.R;
 import ucs.android.aulas.trabalho02_v2.REST.ApiClient;
 import ucs.android.aulas.trabalho02_v2.REST.AppInterface;
@@ -26,11 +28,16 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BDSQLiteHelper bd;
+    ArrayList<Json> listaCeps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
+
+        bd = new BDSQLiteHelper(this);
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -39,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Conectado com sucesso..", Toast.LENGTH_SHORT).show();
             conexao.setTextColor(getResources().getColor(R.color.colorGreenC));
             conexao.setText("CONECTADO");
-
 
             AppInterface service = ApiClient.getClient().create(AppInterface.class);
 
@@ -58,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     // Log error here since request faile;
                 }
             });
-    } else
-        {
+        } else {
             Toast.makeText(MainActivity.this, "Não foi possível conectar..", Toast.LENGTH_SHORT).show();
             conexao.setTextColor(getResources().getColor(R.color.colorRedD));
             conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle(titulo);
         alertDialog.setMessage(mensagem);
-        alertDialog.setButton(AlertDialog. BUTTON_NEUTRAL ,
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL,
                 getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
