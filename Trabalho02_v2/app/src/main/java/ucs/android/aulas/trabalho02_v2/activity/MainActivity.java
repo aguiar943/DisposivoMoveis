@@ -8,10 +8,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +34,10 @@ import ucs.android.aulas.trabalho02_v2.adapter.adapterCEP;
 import ucs.android.aulas.trabalho02_v2.model.Json;
 
 public class MainActivity extends AppCompatActivity {
-
+    private SQLiteDatabase conexao;
     private BDSQLiteHelper bd;
     ArrayList<Json> listaCeps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
 
         bd = new BDSQLiteHelper(this);
+
+        criarConexao();
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -69,6 +79,18 @@ public class MainActivity extends AppCompatActivity {
             conexao.setTextColor(getResources().getColor(R.color.colorRedD));
             conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
         }
+
+    }
+
+    private void criarConexao() {
+        try {
+            bd = new BDSQLiteHelper(this);
+
+            conexao = bd.getWritableDatabase();
+            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão criada com sucesso!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+        } catch (SQLException ex) {
+            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+        }
     }
 
     private void mostraAlerta(String titulo, String mensagem) {
@@ -92,4 +114,6 @@ public class MainActivity extends AppCompatActivity {
         return manager.getActiveNetworkInfo() != null &&
                 manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
+
+
 }
