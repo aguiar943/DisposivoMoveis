@@ -11,6 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <TextView
@@ -22,12 +24,27 @@
             android:text="Conectado"
             android:textSize="16sp" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TvEdtpesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="CEP"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/btnBuscarDados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFA000"
+            android:onClick="AcaoBotao"
             android:text="Buscar Dados" />
+
     </LinearLayout>
 
     <LinearLayout

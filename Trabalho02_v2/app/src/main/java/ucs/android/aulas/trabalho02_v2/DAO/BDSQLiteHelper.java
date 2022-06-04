@@ -64,6 +64,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
     }
 
     public Json getCeps(String cep) {
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABELA_CEP, COLUNAS, "cep = ?",
                 new String[]{String.valueOf(cep)},
@@ -104,6 +105,24 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return listaCeps;
+    }
+
+    public ArrayList<Json> getPesquisaCEP(String cep) {
+        ArrayList<Json> listaPesquisaCeps = new ArrayList<Json>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABELA_CEP, COLUNAS, "cep = ?",
+                new String[]{String.valueOf(cep)},
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToFirst()) {
+            do {
+                Json ceps = cursorToCeps(cursor);
+                listaPesquisaCeps.add(ceps);
+            } while (cursor.moveToNext());
+        }
+        return listaPesquisaCeps;
     }
 
     public int updateCeps(Json ceps) {

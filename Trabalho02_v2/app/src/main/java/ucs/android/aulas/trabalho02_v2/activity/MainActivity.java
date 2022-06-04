@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +38,11 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private BDSQLiteHelper bd;
+    private RecyclerView recyclerView;
+    private  String CodigoCep;
     ArrayList<Json> listaCeps;
+    private  EditText cep;
+    private int iflat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         criarConexao();
 
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
+        Intent intent = getIntent();
+        iflat = intent.getIntExtra("CodFlat",0);
+
+        recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         if (isOnline()) {
@@ -94,7 +103,15 @@ public class MainActivity extends AppCompatActivity {
             conexao.setTextColor(getResources().getColor(R.color.colorRedD));
             conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
 
-            recyclerView.setAdapter(new adapterCEP(bd.getAllCeps(), R.layout.activity_cep, getApplicationContext()));
+            if (iflat != 3){
+                recyclerView.setAdapter(new adapterCEP(bd.getAllCeps(), R.layout.activity_cep, getApplicationContext()));
+            }
+
+            if (iflat == 3){
+                CodigoCep = intent.getStringExtra("CODIGOCEP");
+                recyclerView.setAdapter(new adapterCEP(bd.getPesquisaCEP(CodigoCep), R.layout.activity_cep, getApplicationContext()));
+            }
+
         }
 
     }
@@ -128,5 +145,21 @@ public class MainActivity extends AppCompatActivity {
 
         return manager.getActiveNetworkInfo() != null &&
                 manager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+
+    public void AcaoBotao(View view){
+        switch (view.getId()) {
+            case (R.id.btnBuscarDados):
+                cep         = (EditText) findViewById(R.id.TvEdtpesquisa);
+                CodigoCep = cep.getText().toString();
+//                Json json = bd.getCeps(CodigoCep);
+
+                Intent intent = new Intent(this , MainActivity.class);
+                intent.putExtra("CodFlat", 3);
+                intent.putExtra("CODIGOCEP", CodigoCep);
+                startActivity(intent);
+                break;
+        }
     }
 }

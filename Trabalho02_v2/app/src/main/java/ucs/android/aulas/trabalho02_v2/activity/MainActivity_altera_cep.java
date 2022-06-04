@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import ucs.android.aulas.trabalho02_v2.DAO.BDSQLiteHelper;
@@ -32,7 +31,7 @@ public class MainActivity_altera_cep extends AppCompatActivity {
         cep         = (EditText) findViewById(R.id.TvEdtCep);
         logradouro  = (EditText) findViewById(R.id.TvEdtLogradouro);
         complemento = (EditText) findViewById(R.id.TvEdtComplemento);
-        bairro      = (EditText) findViewById(R.id.TvEdtBairro);
+        bairro      = (EditText) findViewById(R.id.TvEdtpesquisa);
         uf          = (EditText) findViewById(R.id.TvEdtUF);
         ibge        = (EditText) findViewById(R.id.TvEdtIBGE);
 
