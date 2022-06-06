@@ -12,11 +12,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,12 +42,36 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Json> listaCeps;
     private  EditText cep;
     private int iflat;
+    private boolean bconectar, bconectado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
+        Switch bconectar = (Switch) findViewById(R.id.swonline);
+        bconectar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(bconectar.isChecked()){
+                    if (isOnline()) {
+                        bconectado = true;
+                        conexao.setTextColor(getResources().getColor(R.color.colorGreenC));
+                        conexao.setText("CONECTADO");
+                    } else {
+                        bconectado = false;
+                        bconectar.setChecked(false);
+                        conexao.setTextColor(getResources().getColor(R.color.colorRedD));
+                        conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
+                        Toast.makeText(MainActivity.this, "Verifique sua conexão com a Internet", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    bconectado = false;
+                    conexao.setTextColor(getResources().getColor(R.color.colorRedD));
+                    conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
+                }
+            }
+        });
 
         bd = new BDSQLiteHelper(this);
 
@@ -60,53 +83,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        if (isOnline()) {
-            Toast.makeText(MainActivity.this, "Conectado com sucesso..", Toast.LENGTH_SHORT).show();
-            conexao.setTextColor(getResources().getColor(R.color.colorGreenC));
-            conexao.setText("CONECTADO");
-
-            AppInterface service = ApiClient.getClient().create(AppInterface.class);
-
-            Call<List<Json>> callUsers = service.json();
-            callUsers.enqueue(new Callback<List<Json>>() {
-                @Override
-                public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
-                    int statusCode = response.code();
-                    List<Json> json = response.body();
-                    Json jsons1 = new Json();
-                    bd.LimpaCeps(jsons1);
-
-                    for(int i = 1; i < json.size(); i++)
-                    {
-                        Json jsons = new Json();
-                        jsons.setCep(json.get(i).getCep());
-                        jsons.setBairro(json.get(i).getBairro());
-                        jsons.setComplemento(json.get(i).getComplemento());
-                        jsons.setIbge(json.get(i).getIbge());
-                        jsons.setLogradouro(json.get(i).getLogradouro());
-                        jsons.setUf(json.get(i).getUf());
-                        jsons.setLocalidade(json.get(i).getLocalidade());
-
-                        bd.addCep(jsons);
-                    }
-
-                    recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
-                }
-
-                @Override
-                public void onFailure(Call<List<Json>> call, Throwable t) {
-                    mostraAlerta("Erro", t.toString());
-                }
-            });
+        if ((isOnline()) && (bconectar.isChecked())) {
+            bconectado = true;
+            bconectar.setChecked(true);
+            BuscaDados();
         } else {
-            Toast.makeText(MainActivity.this, "Não foi possível conectar..", Toast.LENGTH_SHORT).show();
-            conexao.setTextColor(getResources().getColor(R.color.colorRedD));
-            conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
-
+            bconectado = false;
+            bconectar.setChecked(false);
             if (iflat != 3){
                 recyclerView.setAdapter(new adapterCEP(bd.getAllCeps(), R.layout.activity_cep, getApplicationContext()));
             }
-
             if (iflat == 3){
                 CodigoCep = intent.getStringExtra("CODIGOCEP");
                 recyclerView.setAdapter(new adapterCEP(bd.getPesquisaCEP(CodigoCep), R.layout.activity_cep, getApplicationContext()));
@@ -120,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
             bd = new BDSQLiteHelper(this);
 
             conexao = bd.getWritableDatabase();
-            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão criada com sucesso!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+//            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão criada com sucesso!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         } catch (SQLException ex) {
-            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+//            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         }
     }
     private void mostraAlerta(String titulo, String mensagem) {
@@ -147,19 +133,64 @@ public class MainActivity extends AppCompatActivity {
                 manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
-
     public void AcaoBotao(View view){
         switch (view.getId()) {
-            case (R.id.btnBuscarDados):
-                cep         = (EditText) findViewById(R.id.TvEdtpesquisa);
-                CodigoCep = cep.getText().toString();
-//                Json json = bd.getCeps(CodigoCep);
+                case (R.id.btnPesquisar):
+                    cep  = (EditText) findViewById(R.id.TvEdtpesquisa);
+                    CodigoCep = cep.getText().toString();
+                    Intent intent = new Intent(this , MainActivity.class);
+                    intent.putExtra("CodFlat", 3);
+                    intent.putExtra("CODIGOCEP", CodigoCep);
+                    startActivity(intent);
+                break;
+                case (R.id.BtnBuscaAPI):
+                    if (bconectado) {
+                        BuscaDados();
+//                        AppInterface service = ApiClient.getClient().create(AppInterface.class);
+//                        Call<List<Json>> callUsers = service.json();
 
-                Intent intent = new Intent(this , MainActivity.class);
-                intent.putExtra("CodFlat", 3);
-                intent.putExtra("CODIGOCEP", CodigoCep);
-                startActivity(intent);
+                    } else
+                    {
+                        Toast.makeText(MainActivity.this, "Verifique sua conexão com a Internet", Toast.LENGTH_SHORT).show();
+                    }
                 break;
         }
     }
+
+    public void BuscaDados(){
+        AppInterface service = ApiClient.getClient().create(AppInterface.class);
+        Call<List<Json>> callUsers = service.json();
+        callUsers.enqueue(new Callback<List<Json>>() {
+            @Override
+            public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
+                int statusCode = response.code();
+                List<Json> json = response.body();
+                Json jsons1 = new Json();
+                bd.LimpaCeps(jsons1);
+
+                for(int i = 1; i < json.size(); i++)
+                {
+                    Json jsons = new Json();
+                    jsons.setCep(json.get(i).getCep());
+                    jsons.setBairro(json.get(i).getBairro());
+                    jsons.setComplemento(json.get(i).getComplemento());
+                    jsons.setIbge(json.get(i).getIbge());
+                    jsons.setLogradouro(json.get(i).getLogradouro());
+                    jsons.setUf(json.get(i).getUf());
+                    jsons.setLocalidade(json.get(i).getLocalidade());
+
+                    bd.addCep(jsons);
+                }
+
+                recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
+            }
+
+            @Override
+            public void onFailure(Call<List<Json>> call, Throwable t) {
+                mostraAlerta("Erro", t.toString());
+            }
+        });
+    }
+
+
 }

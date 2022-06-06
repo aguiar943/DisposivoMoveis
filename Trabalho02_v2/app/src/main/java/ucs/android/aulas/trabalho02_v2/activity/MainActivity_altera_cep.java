@@ -52,7 +52,7 @@ public class MainActivity_altera_cep extends AppCompatActivity {
             case (R.id.BtnCancelar):
                 finish();
                 break;
-            case (R.id.BtnRemover):
+            case (R.id.BtnBuscaAPI):
                 mostraAlerta();
                 break;
         }

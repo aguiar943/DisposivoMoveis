@@ -15,14 +15,31 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/TvConexao"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:fontFamily="sans-serif-black"
-            android:text="Conectado"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TvConexao"
+                android:layout_width="217dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:fontFamily="sans-serif-black"
+                android:text="Conectado"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Switch
+                android:id="@+id/swonline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -38,28 +55,43 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnBuscarDados"
+            android:id="@+id/btnPesquisar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFA000"
             android:onClick="AcaoBotao"
-            android:text="Buscar Dados" />
+            android:text="PESQUISAR" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="417dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/posts_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/posts_recycler_view"
+        <Button
+            android:id="@+id/BtnBuscaAPI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" >
-
-        </androidx.recyclerview.widget.RecyclerView>
-
+            android:backgroundTint="#201E1E"
+            android:onClick="AcaoBotao"
+            android:text="BUSCAR DADOS" />
     </LinearLayout>
 
 </LinearLayout>
