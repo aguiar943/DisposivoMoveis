@@ -107,11 +107,11 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         return listaCeps;
     }
 
-    public ArrayList<Json> getPesquisaCEP(String cep) {
+    public ArrayList<Json> getPesquisaCEP(String cep, String colunapesquisa) {
         ArrayList<Json> listaPesquisaCeps = new ArrayList<Json>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABELA_CEP, COLUNAS, "cep = ?",
-                new String[]{String.valueOf(cep)},
+        Cursor cursor = db.query(TABELA_CEP, COLUNAS, colunapesquisa + " like ?",
+                new String[]{"%"+ String.valueOf(cep) + "%"},
                 null,
                 null,
                 null,

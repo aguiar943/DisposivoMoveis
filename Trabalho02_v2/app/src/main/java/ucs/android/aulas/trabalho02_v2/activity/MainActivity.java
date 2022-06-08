@@ -13,8 +13,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private BDSQLiteHelper bd;
     private RecyclerView recyclerView;
-    private  String CodigoCep;
+    private  String CodigoCep, campopesquisa;
     ArrayList<Json> listaCeps;
-    private  EditText cep;
+    private  EditText pesquisa;
     private int iflat;
     private boolean bconectar, bconectado;
+    private Spinner snopcaopesquisa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
         Switch bconectar = (Switch) findViewById(R.id.swonline);
+
+        conexao.setTextColor(getResources().getColor(R.color.colorRedD));
+        conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
+
+        campopesquisa = "";
+        pesquisa  = (EditText) findViewById(R.id.TvEdtpesquisa);
+        snopcaopesquisa = (Spinner) findViewById(R.id.spopcaopesquisa);
+
+        snopcaopesquisa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                campopesquisa = (snopcaopesquisa.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         bconectar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -73,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        conexao.setTextColor(getResources().getColor(R.color.colorRedD));
+        conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
+
         bd = new BDSQLiteHelper(this);
 
         criarConexao();
@@ -95,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
             }
             if (iflat == 3){
                 CodigoCep = intent.getStringExtra("CODIGOCEP");
-                recyclerView.setAdapter(new adapterCEP(bd.getPesquisaCEP(CodigoCep), R.layout.activity_cep, getApplicationContext()));
+                campopesquisa = intent.getStringExtra("COLUNAPESQUISA");
+                recyclerView.setAdapter(new adapterCEP(bd.getPesquisaCEP(CodigoCep,campopesquisa), R.layout.activity_cep, getApplicationContext()));
             }
         }
     }
@@ -130,11 +157,12 @@ public class MainActivity extends AppCompatActivity {
     public void AcaoBotao(View view){
         switch (view.getId()) {
                 case (R.id.btnPesquisar):
-                    cep  = (EditText) findViewById(R.id.TvEdtpesquisa);
-                    CodigoCep = cep.getText().toString();
+//                    cep  = (EditText) findViewById(R.id.TvEdtpesquisa);
+                    CodigoCep = pesquisa.getText().toString();
                     Intent intent = new Intent(this , MainActivity.class);
                     intent.putExtra("CodFlat", 3);
                     intent.putExtra("CODIGOCEP", CodigoCep);
+                    intent.putExtra("COLUNAPESQUISA", campopesquisa);
                     startActivity(intent);
                 break;
                 case (R.id.BtnBuscaAPI):
