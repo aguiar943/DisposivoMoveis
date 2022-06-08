@@ -97,16 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 CodigoCep = intent.getStringExtra("CODIGOCEP");
                 recyclerView.setAdapter(new adapterCEP(bd.getPesquisaCEP(CodigoCep), R.layout.activity_cep, getApplicationContext()));
             }
-
         }
-
     }
     private void criarConexao() {
         try {
-            bd = new BDSQLiteHelper(this);
-
             conexao = bd.getWritableDatabase();
-//            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão criada com sucesso!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         } catch (SQLException ex) {
 //            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         }
@@ -128,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isOnline() {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
         return manager.getActiveNetworkInfo() != null &&
                 manager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
@@ -146,9 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 case (R.id.BtnBuscaAPI):
                     if (bconectado) {
                         BuscaDados();
-//                        AppInterface service = ApiClient.getClient().create(AppInterface.class);
-//                        Call<List<Json>> callUsers = service.json();
-
                     } else
                     {
                         Toast.makeText(MainActivity.this, "Verifique sua conexão com a Internet", Toast.LENGTH_SHORT).show();
@@ -165,9 +156,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Json>> call, Response<List<Json>> response) {
                 int statusCode = response.code();
                 List<Json> json = response.body();
-                Json jsons1 = new Json();
-                bd.LimpaCeps(jsons1);
-
+                bd.LimpaCeps();
                 for(int i = 1; i < json.size(); i++)
                 {
                     Json jsons = new Json();
@@ -178,10 +167,8 @@ public class MainActivity extends AppCompatActivity {
                     jsons.setLogradouro(json.get(i).getLogradouro());
                     jsons.setUf(json.get(i).getUf());
                     jsons.setLocalidade(json.get(i).getLocalidade());
-
                     bd.addCep(jsons);
                 }
-
                 recyclerView.setAdapter(new adapterCEP(json, R.layout.activity_cep, getApplicationContext()));
             }
 
@@ -191,6 +178,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

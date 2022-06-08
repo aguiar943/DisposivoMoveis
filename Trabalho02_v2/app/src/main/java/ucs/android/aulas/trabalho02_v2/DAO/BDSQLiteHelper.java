@@ -95,7 +95,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
 
     public ArrayList<Json> getAllCeps() {
         ArrayList<Json> listaCeps = new ArrayList<Json>();
-        String query = "SELECT * FROM " + TABELA_CEP + " ORDER BY " + CEP;
+        String query = "SELECT * FROM " + TABELA_CEP + " ORDER BY " + ID;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
@@ -141,7 +141,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public int LimpaCeps(Json ceps) {
+    public int LimpaCeps() {
         SQLiteDatabase db = this.getWritableDatabase();
         int i = db.delete(TABELA_CEP, null, null);
         db.close();
