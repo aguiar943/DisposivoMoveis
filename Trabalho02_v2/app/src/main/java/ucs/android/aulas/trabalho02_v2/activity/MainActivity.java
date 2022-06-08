@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             conexao = bd.getWritableDatabase();
         } catch (SQLException ex) {
-//            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+            Snackbar.make(findViewById(R.id.LayoutInicial), "Conexão falhou!", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
         }
     }
     private void mostraAlerta(String titulo, String mensagem) {
@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
     public void AcaoBotao(View view){
         switch (view.getId()) {
                 case (R.id.btnPesquisar):
-//                    cep  = (EditText) findViewById(R.id.TvEdtpesquisa);
                     CodigoCep = pesquisa.getText().toString();
                     Intent intent = new Intent(this , MainActivity.class);
                     intent.putExtra("CodFlat", 3);
