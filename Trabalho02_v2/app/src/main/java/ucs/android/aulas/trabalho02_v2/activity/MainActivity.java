@@ -12,6 +12,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private BDSQLiteHelper bd;
     private RecyclerView recyclerView;
     private  String CodigoCep, campopesquisa;
-    ArrayList<Json> listaCeps;
     private  EditText pesquisa;
     private int iflat;
     private boolean bconectar, bconectado;
@@ -166,7 +166,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
                 case (R.id.BtnBuscaAPI):
                     if (bconectado) {
-                        BuscaDados();
+                        mostraAlerta();
+
                     } else
                     {
                         Toast.makeText(MainActivity.this, "Verifique sua conexão com a Internet", Toast.LENGTH_SHORT).show();
@@ -204,5 +205,22 @@ public class MainActivity extends AppCompatActivity {
                 mostraAlerta("Erro", t.toString());
             }
         });
+    }
+
+    private void mostraAlerta() {
+        AlertDialog.Builder ConfirmaItem = new AlertDialog.Builder(MainActivity.this);
+        ConfirmaItem.setTitle("Atenção!");
+        ConfirmaItem.setMessage("Confirma Exclusão dos CEPs e sincronização com o servidor?");
+        ConfirmaItem.setCancelable(false);
+        ConfirmaItem.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which ) {
+                BuscaDados();
+                SystemClock.sleep(300);
+                Toast.makeText(MainActivity.this, "Dados atualizados", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ConfirmaItem.setNegativeButton("Não",null);
+        ConfirmaItem.create().show();
     }
 }
