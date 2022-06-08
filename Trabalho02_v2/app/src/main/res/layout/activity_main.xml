@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#201E1E"
             android:onClick="AcaoBotao"
-            android:text="BUSCAR DADOS" />
+            android:text="Sincronizar dados" />
     </LinearLayout>
 
 </LinearLayout>
