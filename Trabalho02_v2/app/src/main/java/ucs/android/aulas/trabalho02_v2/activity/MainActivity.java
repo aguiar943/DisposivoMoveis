@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private BDSQLiteHelper bd;
     private RecyclerView recyclerView;
-    private  String CodigoCep, campopesquisa;
+    private  String CodigoCep, campopesquisa, BASE_URL;
     private  EditText pesquisa;
     private int iflat;
     private boolean bconectar, bconectado;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView conexao = (TextView) findViewById(R.id.TvConexao);
         Switch bconectar = (Switch) findViewById(R.id.swonline);
-
+        BASE_URL = "https://viacep.com.br/ws/RS/Caxias do Sul/Domingos/";
         conexao.setTextColor(getResources().getColor(R.color.colorRedD));
         conexao.setText("DESCONECTADO - CONEXÃO LOCAL");
 
@@ -177,7 +177,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void BuscaDados(){
-        AppInterface service = ApiClient.getClient().create(AppInterface.class);
+        VerificaURL();
+
+        AppInterface service = ApiClient.getClient(BASE_URL).create(AppInterface.class);
         Call<List<Json>> callUsers = service.json();
         callUsers.enqueue(new Callback<List<Json>>() {
             @Override
@@ -216,11 +218,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which ) {
                 BuscaDados();
-                SystemClock.sleep(300);
+                SystemClock.sleep(4000);
                 Toast.makeText(MainActivity.this, "Dados atualizados", Toast.LENGTH_SHORT).show();
             }
         });
         ConfirmaItem.setNegativeButton("Não",null);
         ConfirmaItem.create().show();
+    }
+    public void VerificaURL() {
+        CodigoCep = pesquisa.getText().toString();
+        if (CodigoCep.toString().isEmpty()) {
+
+        }else
+        {
+            BASE_URL = "https://viacep.com.br/ws/RS/Caxias do Sul/ "+ pesquisa.getText().toString()  + "/";
+             if (campopesquisa.equals("CEP")){
+                 BASE_URL = "https://viacep.com.br/ws/"+ pesquisa.getText().toString()  + "/";
+             }
+        }
     }
 }
