@@ -23,7 +23,6 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
     private int rowLayout;
     private Context context;
 
-
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         LinearLayout postsLayout;
         TextView VarCep;
@@ -32,7 +31,6 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
         TextView VarUF;
         TextView VarIBGE;
         TextView VarComplemento;
-
 
         public PostViewHolder(View v) {
             super(v);
@@ -58,7 +56,6 @@ public class adapterCEP  extends RecyclerView.Adapter<adapterCEP.PostViewHolder>
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return new PostViewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, @SuppressLint("RecyclerView") int position) {

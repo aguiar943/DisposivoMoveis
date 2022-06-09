@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private BDSQLiteHelper bd;
     private RecyclerView recyclerView;
-    private  String CodigoCep, campopesquisa, BASE_URL;
-    private  EditText pesquisa;
+    private String CodigoCep, campopesquisa, BASE_URL;
+    private EditText pesquisa;
     private int iflat;
     private boolean bconectar, bconectado;
     private Spinner snopcaopesquisa;
@@ -176,10 +176,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
     public void BuscaDados(){
         VerificaURL();
-
         AppInterface service = ApiClient.getClient(BASE_URL,null).create(AppInterface.class);
         Call<List<Json>> callUsers = service.json();
         callUsers.enqueue(new Callback<List<Json>>() {

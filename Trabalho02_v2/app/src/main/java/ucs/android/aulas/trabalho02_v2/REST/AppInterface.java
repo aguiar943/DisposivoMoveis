@@ -10,7 +10,4 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 public interface AppInterface {
     @GET("json")
     Call<List<Json>> json();
-
-
-
 }
