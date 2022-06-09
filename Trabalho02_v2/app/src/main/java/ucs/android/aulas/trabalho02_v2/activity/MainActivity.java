@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 List<Json> json = response.body();
                 bd.LimpaCeps();
-                for(int i = 1; i < json.size(); i++)
+                for(int i = 0; i < json.size(); i++)
                 {
                     Json jsons = new Json();
                     jsons.setCep(json.get(i).getCep());
