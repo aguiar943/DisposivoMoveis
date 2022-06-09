@@ -30,6 +30,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 import ucs.android.aulas.trabalho02_v2.DAO.BDSQLiteHelper;
 import ucs.android.aulas.trabalho02_v2.R;
 import ucs.android.aulas.trabalho02_v2.REST.ApiClient;
@@ -179,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
     public void BuscaDados(){
         VerificaURL();
 
-        AppInterface service = ApiClient.getClient(BASE_URL).create(AppInterface.class);
+        AppInterface service = ApiClient.getClient(BASE_URL,null).create(AppInterface.class);
         Call<List<Json>> callUsers = service.json();
         callUsers.enqueue(new Callback<List<Json>>() {
             @Override
