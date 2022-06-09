@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import ucs.android.aulas.trabalho02_v2.DAO.BDSQLiteHelper;
@@ -16,13 +19,15 @@ import ucs.android.aulas.trabalho02_v2.model.Json;
 
 public class MainActivity_altera_cep extends AppCompatActivity {
     private BDSQLiteHelper bd;
-    private  String CodigoCep;
-    private  EditText cep, logradouro, complemento, bairro, uf, ibge;
+    private String CodigoCep;
+    private EditText cep, logradouro, complemento, bairro, uf, ibge;
+    private ImageButton btnMapa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_altera_cep);
 
+        btnMapa = findViewById(R.id.BtnMapa1);
         Intent intent = getIntent();
         CodigoCep = intent.getStringExtra("CODIGOCEP");
         bd = new BDSQLiteHelper(this);
@@ -43,7 +48,6 @@ public class MainActivity_altera_cep extends AppCompatActivity {
         ibge.setText(String.valueOf(json.getIbge()));
     }
 
-
     public void AcaoBotao(View view){
         switch (view.getId()) {
             case (R.id.BtnSalvar):
@@ -54,6 +58,9 @@ public class MainActivity_altera_cep extends AppCompatActivity {
                 break;
             case (R.id.BtnBuscaAPI):
                 mostraAlerta();
+                break;
+            case (R.id.BtnMapa1):
+                mapa();
                 break;
         }
     }
@@ -94,5 +101,13 @@ public class MainActivity_altera_cep extends AppCompatActivity {
 
         Intent intent1 = new Intent(MainActivity_altera_cep.this, MainActivity.class);
         startActivity(intent1);
+    }
+
+    public void mapa(){
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+ logradouro.getText().toString() + "," + bairro.getText().toString());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+
     }
 }

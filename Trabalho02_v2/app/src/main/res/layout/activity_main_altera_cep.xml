@@ -17,19 +17,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="232dp"
                 android:layout_height="wrap_content"
-                android:enabled="false">
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/TvEdtCep"
+                <ImageButton
+                    android:id="@+id/BtnMapa1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="AcaoBotao"
+                    app:srcCompat="@android:drawable/ic_dialog_map" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CEP"
-                    android:inputType="number|textPostalAddress"
-                    android:maxLength="9" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:enabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TvEdtCep"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="CEP"
+                        android:inputType="number|textPostalAddress"
+                        android:maxLength="9" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -102,7 +116,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="291dp">
+                android:layout_height="269dp">
 
                 <Button
                     android:id="@+id/BtnSalvar"
@@ -142,6 +156,7 @@
                     android:backgroundTint="#201E1E"
                     android:onClick="AcaoBotao"
                     android:text="Remover" />
+
             </LinearLayout>
 
         </LinearLayout>
