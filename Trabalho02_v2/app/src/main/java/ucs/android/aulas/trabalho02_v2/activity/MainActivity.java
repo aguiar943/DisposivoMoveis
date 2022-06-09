@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which ) {
                 BuscaDados();
-                SystemClock.sleep(4000);
+                SystemClock.sleep(1000);
                 Toast.makeText(MainActivity.this, "Dados atualizados", Toast.LENGTH_SHORT).show();
             }
         });
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
     public void VerificaURL() {
         CodigoCep = pesquisa.getText().toString();
         if (CodigoCep.toString().isEmpty()) {
-
+            BASE_URL = "https://viacep.com.br/ws/RS/Caxias do Sul/Domingos/";
         }else
         {
             BASE_URL = "https://viacep.com.br/ws/RS/Caxias do Sul/ "+ pesquisa.getText().toString()  + "/";
