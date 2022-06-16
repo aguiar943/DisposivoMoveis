@@ -1,3 +1,0 @@
-10159885518644288 token
-https://superheroapi.com/api/10159885518644288/search/
-pesquisa
