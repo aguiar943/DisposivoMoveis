@@ -90,11 +90,11 @@ public class Database  {
         }
     }
 
-    public void AddConversa (Date dataenvio, int iremetente, int destinatario, String localizacao, String msg) throws SQLException {
+    public void AddConversa (String dataenvio, int iremetente, int destinatario, String localizacao, String msg) throws SQLException {
        PreparedStatement stmt = conn.prepareStatement("INSERT INTO public.ag_conversas( " +
                "co_data, co_usuario_remetente, co_usuario_destinatario, co_localizacao, co_msg) " +
         "    VALUES ( ?, ?, ?, ?, ?);");
-        stmt.setDate(1, dataenvio);
+        stmt.setString(1, dataenvio);
         stmt.setInt(2, iremetente);
         stmt.setInt(3, destinatario);
         stmt.setString(4, localizacao);
@@ -104,7 +104,7 @@ public class Database  {
     }
 
     public void AddUsuario (String Usuario, String Online) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO public.ca_usuarios( " +
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO public.ag_usuarios( " +
                 "us_usuario, us_online) " +
                 "    VALUES ( ?, ?);");
         stmt.setString(1, Usuario);
@@ -117,7 +117,7 @@ public class Database  {
     public ArrayList<Usuarios> getMostraOnlines() throws SQLException{
         String SQL;
         ArrayList<Usuarios> listaOnlines = new ArrayList<Usuarios>();
-        SQL = "select * from ca_usuarios where us_online ='S'";
+        SQL = "select * from ag_usuarios where us_online ='S'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(SQL);
         while (rs.next()){
