@@ -26,18 +26,15 @@ public class adapterMSG extends RecyclerView.Adapter<adapterMSG.PostViewHolder>{
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         LinearLayout postsLayout;
         TextView VarNome;
-        TextView VarLocalizacao;
+        TextView VarMSG;
 
 
         public PostViewHolder(View v) {
             super(v);
-            postsLayout = (LinearLayout) v.findViewById(R.id.IDONLINES);
-            VarNome = (TextView) v.findViewById(R.id.tvnome);
-            VarLocalizacao = (TextView) v.findViewById(R.id.tvlocalizacao);
-//            VarLogradouro = (TextView) v.findViewById(R.id.tvlogradouro);
-//            VarUF = (TextView) v.findViewById(R.id.tvuf);
-//            VarIBGE = (TextView) v.findViewById(R.id.tvibge);
-//            VarComplemento = (TextView) v.findViewById(R.id.tvcomplemento);
+            postsLayout = (LinearLayout) v.findViewById(R.id.IDCONVERSAS);
+            VarNome = (TextView) v.findViewById(R.id.tvnomechat);
+            VarMSG = (TextView) v.findViewById(R.id.tvmensagens);
+
         }
     }
 

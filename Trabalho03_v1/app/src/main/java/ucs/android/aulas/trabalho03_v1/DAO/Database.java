@@ -113,6 +113,23 @@ public class Database  {
         stmt.close();
     }
 
+    public ArrayList<Conversas> getMostraConversas(int usuario_destinatario, int usuario_remetente) throws SQLException{
+        String SQL;
+        ArrayList<Conversas> listaMSG = new ArrayList<Conversas>();
+        SQL = " select * from ag_conversas where co_usuario_destinatario =" + usuario_destinatario +
+              " and co_usuario_remetente = " + usuario_remetente;
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(SQL);
+        while (rs.next()){
+            Conversas conversas = new Conversas();
+            conversas.setMsg(rs.getString("co_msg"));
+            listaMSG.add(conversas);
+        }
+        rs.close();
+        st.close();
+        return listaMSG;
+    }
+
 
     public ArrayList<Usuarios> getMostraOnlines() throws SQLException{
         String SQL;
