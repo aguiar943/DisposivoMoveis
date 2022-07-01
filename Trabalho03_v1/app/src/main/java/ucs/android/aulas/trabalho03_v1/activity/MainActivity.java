@@ -18,10 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import ucs.android.aulas.trabalho03_v1.DAO.Database;
 import ucs.android.aulas.trabalho03_v1.R;
 import ucs.android.aulas.trabalho03_v1.adapter.adapterMSG;
+import ucs.android.aulas.trabalho03_v1.adapter.adapterUsuarios;
 import ucs.android.aulas.trabalho03_v1.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -79,4 +83,17 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        try {
+//            Database bd = new Database();
+//            bd.DesconectadaUsuario(sUsuario ,"S");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        Toast.makeText(getApplicationContext(),"16. onDestroy()", Toast.LENGTH_SHORT).show();
+//    }
+
 }

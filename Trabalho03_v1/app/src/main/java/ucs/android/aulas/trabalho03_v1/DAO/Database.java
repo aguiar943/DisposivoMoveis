@@ -113,6 +113,16 @@ public class Database  {
         stmt.close();
     }
 
+    public void DesconectadaUsuario (String Usuario, String Online) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("UPDATE  public.ag_usuarios  SET " +
+                "us_usuario = ?,  " +
+                "us_online = ? ;");
+        stmt.setString(1, Usuario);
+        stmt.setString(2, Online);
+        int rows = stmt.executeUpdate();
+        stmt.close();
+    }
+
     public ArrayList<Conversas> getMostraConversas(int usuario_destinatario, int usuario_remetente) throws SQLException{
         String SQL;
         ArrayList<Conversas> listaMSG = new ArrayList<Conversas>();
