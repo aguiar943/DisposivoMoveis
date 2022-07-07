@@ -46,7 +46,7 @@ public class MainActivity_chat extends AppCompatActivity {
     EditText texto;
     private Database bd;
     private BDSQLiteHelper bdlocal;
-    private String Stexto , sUsuario, sNomeUsuarioDestino , slocalizao;
+    private String Stexto , sUsuario, sNomeUsuarioDestino , slocalizao , nome;
     private RecyclerView recyclerView;
     private int iNomeUsuarioDestino, iNomeUsuarioRemetente;
     private Address endereco;
@@ -96,7 +96,7 @@ public class MainActivity_chat extends AppCompatActivity {
                 try {
                     Stexto = texto.getText().toString();
                     if (Stexto != "") {
-                        db.AddConversa(data,iNomeUsuarioRemetente,iNomeUsuarioDestino,slocalizao, Stexto);
+                        db.AddConversa(data,iNomeUsuarioRemetente,iNomeUsuarioDestino,slocalizao, Stexto, nome ,sNomeUsuarioDestino);
                     }
                     Stexto = "";
                     texto.setText(new String(Stexto).toString());
@@ -108,11 +108,8 @@ public class MainActivity_chat extends AppCompatActivity {
             case (R.id.btnimg):
                 setAtual();
                 break;
-
         }
-
     }
-
 
     public void setAtual(){
         if(endereco != null ) {
@@ -120,18 +117,13 @@ public class MainActivity_chat extends AppCompatActivity {
                 Cidade.setText(endereco.getSubAdminArea());
             }else{
                 Cidade.setText(endereco.getLocality());
-
             }
-
         }
         else {
             getLocation();
 //            Toast.makeText(getApplicationContext(), "buscando localização", Toast.LENGTH_SHORT).show();
         }
-
         slocalizao = Cidade.getText().toString();
-
-
     }
 
     public void CarregaInformacoes(){
@@ -145,7 +137,7 @@ public class MainActivity_chat extends AppCompatActivity {
 
     public void CarregaUsuario()  {
         iNomeUsuarioRemetente = 0;
-        String nome;
+
         Database bd = new Database();
         bdlocal = new BDSQLiteHelper(this);
 

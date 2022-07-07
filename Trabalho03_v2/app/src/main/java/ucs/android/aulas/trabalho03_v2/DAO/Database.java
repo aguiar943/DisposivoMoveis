@@ -83,15 +83,17 @@ public class Database {
         }
     }
 
-    public void AddConversa (String dataenvio, int iremetente, int destinatario, String localizacao, String msg) throws SQLException {
+    public void AddConversa (String dataenvio, int iremetente, int destinatario, String localizacao, String msg, String sremetente, String sdestinatario) throws SQLException {
        PreparedStatement stmt = conn.prepareStatement("INSERT INTO public.ag_conversas( " +
-               "co_data, co_usuario_remetente, co_usuario_destinatario, co_localizacao, co_msg) " +
-        "    VALUES ( ?, ?, ?, ?, ?);");
+               "co_data, co_usuario_remetente, co_usuario_destinatario, co_localizacao, co_msg, co_nome_remetente, co_nome_destinatario) " +
+        "    VALUES ( ?, ?, ?, ?, ?, ?, ?);");
         stmt.setString(1, dataenvio);
         stmt.setInt(2, iremetente);
         stmt.setInt(3, destinatario);
         stmt.setString(4, localizacao);
         stmt.setString(5, msg);
+        stmt.setString(6, sremetente);
+        stmt.setString(7, sdestinatario);
         int rows = stmt.executeUpdate();
         stmt.close();
     }

@@ -54,7 +54,7 @@ public class adapterMSG extends RecyclerView.Adapter<adapterMSG.PostViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, @SuppressLint("RecyclerView") int position) {
-//        holder.VarNome.setText(conversa.get(position).get());
+        holder.VarNome.setText(conversa.get(position).getNomeRemetente());
         holder.VarMSG.setText(conversa.get(position).getMsg());
         holder.VarLocalizacao.setText(conversa.get(position).getLocalizacao());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
