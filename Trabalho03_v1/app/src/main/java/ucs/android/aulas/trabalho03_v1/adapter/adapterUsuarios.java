@@ -60,18 +60,13 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.PostVi
     @Override
     public void onBindViewHolder(@NonNull final adapterUsuarios.PostViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.VarUsuario.setText(usuarios.get(position).getUsuario());
-//        holder.VarLocalizacao.setText(conversa.get(position).getBairro());
-//        holder.VarLogradouro.setText(conversa.get(position).getLogradouro());
-//        holder.VarUF.setText(json.get(position).getUf());
-//        holder.VarIBGE.setText(json.get(position).getIbge());
-//        holder.VarComplemento.setText(json.get(position).getComplemento());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context , MainActivity_chat.class);
-//                intent.putExtra("CODIGOCEP", json.get(position).getCep());
+                intent.putExtra("NomeUsuarioDestino", usuarios.get(position).getUsuario());
 
                 context.startActivity(intent);
             }
@@ -82,4 +77,5 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.PostVi
     public int getItemCount() {
         return usuarios.size();
     }
+
 }

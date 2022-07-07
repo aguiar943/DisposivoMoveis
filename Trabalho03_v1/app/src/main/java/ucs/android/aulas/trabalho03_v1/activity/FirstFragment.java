@@ -54,31 +54,14 @@ public class FirstFragment extends Fragment {
                 Database db = new Database();
                 try {
                     db.getConnection();
-//                    db.VerificaUsuario(sUsuario);
-//                   if   {
-                       db.AddUsuario(sUsuario ,"S");
-//                   } else{
-//                       db.ReconectaUsuario(sUsuario ,"S");
-//                   }
+                    db.AddUsuario(sUsuario ,"S");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+//
 //                Intent intent = new Intent(getContext(), MainActivity_conversas.class);
-//                intent.putExtra("UsuarioLogado", sUsuario);
+//                intent.putExtra("sUsuario", sUsuario);
 //                startActivity(intent);
-
-
-
-
-                /* Passando variável para outro Fragment*/
-//                Bundle data = new Bundle();
-//                data.putString("UsuarioLogado",sUsuario);
-//                FragmentManager fgm = getFragmentManager();
-//                FragmentTransaction ft = fgm.beginTransaction();
-//                First2Fragment frag2 = new First2Fragment();
-//                frag2.setArguments(data);
-//                ft.replace(R.id.tvusuariologado, frag2);
-//                ft.commit();
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }

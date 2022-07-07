@@ -33,11 +33,9 @@ public class MainActivity_conversas extends AppCompatActivity {
     private Database bd;
     private RecyclerView recyclerView;
     private String sUsuario;
-    final FragmentManager fgm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainConversasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

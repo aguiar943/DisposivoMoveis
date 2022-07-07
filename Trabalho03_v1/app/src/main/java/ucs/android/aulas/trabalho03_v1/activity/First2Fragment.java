@@ -36,19 +36,12 @@ public class First2Fragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        View view = inflater.inflate(R.layout.fragment_first2, container, false);
+       View view = inflater.inflate(R.layout.fragment_first2, container, false);
         recyclerView = view.findViewById(R.id.recyclervmsg);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-
-//        sUsuario = (String) getArguments().getSerializable("UsuarioLogado");
-
-
-
-
-
-
+        TextView nome = view.findViewById(R.id.tvusuariologado);
+        sUsuario = (nome.getText().toString());
         try {
             Database bd = new Database();
             recyclerView.setAdapter(new adapterUsuarios(bd.getMostraOnlines(sUsuario), R.layout.activity_msg, getActivity()));
@@ -69,6 +62,8 @@ public class First2Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
 
 }

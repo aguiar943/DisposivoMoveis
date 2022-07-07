@@ -95,20 +95,22 @@ public class Database  {
         stmt.close();
     }
 
-    public void  VerificaUsuario (String Usuario) throws SQLException {
+    public int  VerificaUsuario (String Usuario) throws SQLException {
         String SQL;
-        SQL = "SELECT COUNT(*) FROM public.ag_usuarios  " +
+        int resposta = 0;
+        SQL = "SELECT * FROM public.ag_usuarios  " +
         " WHERE us_usuario = '" + Usuario + "'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(SQL);
-        int totalOfRecords = rs.getRow();
         while (rs.next()){
             Conversas conversas = new Conversas();
-            conversas.setMsg(rs.getString("co_msg"));
-
+            conversas.setMsg(rs.getString("us_usuario"));
+            resposta = rs.getInt("us_idl");
         }
         rs.close();
         st.close();
+
+        return resposta;
     }
 
     public void AddUsuario (String Usuario, String Online) throws SQLException {
@@ -193,4 +195,6 @@ public class Database  {
         usuarios.setOnline(cursor.getString(2));
         return usuarios;
     }
+
+
 }

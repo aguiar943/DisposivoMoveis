@@ -84,16 +84,4 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        try {
-//            Database bd = new Database();
-//            bd.DesconectadaUsuario(sUsuario ,"S");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        Toast.makeText(getApplicationContext(),"16. onDestroy()", Toast.LENGTH_SHORT).show();
-//    }
-
 }

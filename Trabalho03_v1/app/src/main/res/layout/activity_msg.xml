@@ -19,11 +19,13 @@
             android:id="@+id/tvlocalizacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="localizacao" />
+            android:text="localizacao"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvlocalizacao2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>

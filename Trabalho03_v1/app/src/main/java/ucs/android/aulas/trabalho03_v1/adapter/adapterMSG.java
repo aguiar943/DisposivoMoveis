@@ -55,20 +55,11 @@ public class adapterMSG extends RecyclerView.Adapter<adapterMSG.PostViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.VarNome.setText(conversa.get(position).getMsg());
-//        holder.VarLocalizacao.setText(conversa.get(position).getBairro());
-//        holder.VarLogradouro.setText(conversa.get(position).getLogradouro());
-//        holder.VarUF.setText(json.get(position).getUf());
-//        holder.VarIBGE.setText(json.get(position).getIbge());
-//        holder.VarComplemento.setText(json.get(position).getComplemento());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Context context = v.getContext();
-//                Intent intent = new Intent(context , MainActivity_altera_cep.class);
-//                intent.putExtra("CODIGOCEP", json.get(position).getCep());
-//
-//                context.startActivity(intent);
+
             }
         });
     }
