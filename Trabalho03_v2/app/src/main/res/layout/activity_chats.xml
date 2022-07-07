@@ -16,14 +16,21 @@
             android:text="nome" />
 
         <TextView
-            android:id="@+id/tvmensagens"
+            android:id="@+id/tvmensagemchat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TESTE" />
+
+        <TextView
+            android:id="@+id/tvlocalizaochat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/tvlocalizacao2"
+            android:id="@+id/tvlocalizacao3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>

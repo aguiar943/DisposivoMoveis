@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ucs.android.aulas.trabalho03_v2.DAO.BDSQLiteHelper;
 import ucs.android.aulas.trabalho03_v2.DAO.Database;
@@ -32,12 +35,15 @@ public class MainActivity_chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat);
+        TextView tvResp1 = findViewById(R.id.tvusuariomsg);
+        Intent intent = getIntent();
+        sNomeUsuarioDestino = intent.getStringExtra("NomeUsuarioDestino");
 
-        texto = (EditText) findViewById(R.id.edittxtmsg);
-        TextView conexao = (TextView) findViewById(R.id.tvusuario);
-        sUsuario = texto.getText().toString();
+        tvResp1.setText(sNomeUsuarioDestino);
+
         recyclerView = findViewById(R.id.posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         CarregaUsuario();
         CarregaInformacoes();
     }
@@ -45,6 +51,7 @@ public class MainActivity_chat extends AppCompatActivity {
     public void AcaoBotao(View view) throws ParseException {
         switch (view.getId()) {
             case (R.id.btnenviar):
+                texto = (EditText) findViewById(R.id.edittxtmsg);
                 Date dataHoraAtual = new Date();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
@@ -53,11 +60,11 @@ public class MainActivity_chat extends AppCompatActivity {
                 try {
                     Stexto = texto.getText().toString();
                     if (Stexto != "") {
-                        db.AddConversa(data,1,iNomeUsuarioDestino,"Caxias do sul", Stexto);
+                        db.AddConversa(data,iNomeUsuarioRemetente,iNomeUsuarioDestino,"Caxias do sul", Stexto);
                     }
-                    CarregaInformacoes();
                     Stexto = "";
                     texto.setText(new String(Stexto).toString());
+                    CarregaInformacoes();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -67,12 +74,13 @@ public class MainActivity_chat extends AppCompatActivity {
                 break;
 
         }
+
     }
 
     public void CarregaInformacoes(){
         Database bd = new Database();
         try {
-            recyclerView.setAdapter(new adapterMSG(bd.getMostraConversas(1,2), R.layout.activity_chats, getApplicationContext()));
+            recyclerView.setAdapter(new adapterMSG(bd.getMostraConversas(iNomeUsuarioDestino,iNomeUsuarioRemetente), R.layout.activity_chats, getApplicationContext()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,8 +95,20 @@ public class MainActivity_chat extends AppCompatActivity {
         nome = bdlocal.pegarUsuario();
         try {
             iNomeUsuarioRemetente = bd.VerificaUsuario(nome);
+            iNomeUsuarioDestino = bd.VerificaUsuario(sNomeUsuarioDestino);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void timer(){
+        int delay = 5000;
+        int interval = 1000;
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                CarregaInformacoes();
+            }
+        }, delay, interval);
     }
 }

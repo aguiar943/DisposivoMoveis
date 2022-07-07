@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="AcaoBotao"
     android:orientation="vertical"
-    tools:context=".activity.MainActivity_conversas" >
+    tools:context=".activity.MainActivity_conversas">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnrecarregaconversa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="AcaoBotao"
+            android:text="RecarregaConversa" />
 
         <TextView
             android:id="@+id/textView"

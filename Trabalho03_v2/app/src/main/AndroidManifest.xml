@@ -17,12 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trabalho03_v2"
+        android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
             android:name=".activity.MainActivity_conversas"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity_chat"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

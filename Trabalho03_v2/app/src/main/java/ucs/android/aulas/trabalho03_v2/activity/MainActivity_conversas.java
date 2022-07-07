@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.FileOutputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import ucs.android.aulas.trabalho03_v2.DAO.BDSQLiteHelper;
 import ucs.android.aulas.trabalho03_v2.DAO.Database;
@@ -40,11 +44,25 @@ public class MainActivity_conversas extends AppCompatActivity {
         TextView nome = findViewById(R.id.tvusuariologado);
         sUsuario = (nome.getText().toString());
 
+        RecarregaUsuarios();
+    }
+
+
+    public void RecarregaUsuarios(){
         try {
             Database bd = new Database();
             recyclerView.setAdapter(new adapterUsuarios(bd.getMostraOnlines(sUsuario), R.layout.activity_msg, getApplicationContext()));
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void AcaoBotao(View view) {
+        switch (view.getId()) {
+            case (R.id.btnrecarregaconversa):
+                RecarregaUsuarios();
+                break;
+
         }
     }
 }

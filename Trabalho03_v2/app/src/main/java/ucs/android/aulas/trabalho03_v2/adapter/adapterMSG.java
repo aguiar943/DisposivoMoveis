@@ -26,14 +26,15 @@ public class adapterMSG extends RecyclerView.Adapter<adapterMSG.PostViewHolder>{
         LinearLayout postsLayout;
         TextView VarNome;
         TextView VarMSG;
+        TextView VarLocalizacao;
 
 
         public PostViewHolder(View v) {
             super(v);
             postsLayout = (LinearLayout) v.findViewById(R.id.IDCONVERSAS);
             VarNome = (TextView) v.findViewById(R.id.tvnomechat);
-            VarMSG = (TextView) v.findViewById(R.id.tvmensagens);
-
+            VarMSG = (TextView) v.findViewById(R.id.tvmensagemchat);
+            VarLocalizacao = (TextView)  v.findViewById(R.id.tvlocalizaochat);
         }
     }
 
@@ -53,8 +54,9 @@ public class adapterMSG extends RecyclerView.Adapter<adapterMSG.PostViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull final PostViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.VarNome.setText(conversa.get(position).getMsg());
-
+//        holder.VarNome.setText(conversa.get(position).get());
+        holder.VarMSG.setText(conversa.get(position).getMsg());
+        holder.VarLocalizacao.setText(conversa.get(position).getLocalizacao());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
