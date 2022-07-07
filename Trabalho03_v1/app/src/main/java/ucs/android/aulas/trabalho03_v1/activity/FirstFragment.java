@@ -1,5 +1,6 @@
 package ucs.android.aulas.trabalho03_v1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,12 +54,31 @@ public class FirstFragment extends Fragment {
                 Database db = new Database();
                 try {
                     db.getConnection();
-                    db.AddUsuario(sUsuario ,"S");
+//                    db.VerificaUsuario(sUsuario);
+//                   if   {
+                       db.AddUsuario(sUsuario ,"S");
+//                   } else{
+//                       db.ReconectaUsuario(sUsuario ,"S");
+//                   }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Snackbar.make(view, "teste", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Intent intent = new Intent(getContext(), MainActivity_conversas.class);
+//                intent.putExtra("UsuarioLogado", sUsuario);
+//                startActivity(intent);
+
+
+
+
+                /* Passando variável para outro Fragment*/
+//                Bundle data = new Bundle();
+//                data.putString("UsuarioLogado",sUsuario);
+//                FragmentManager fgm = getFragmentManager();
+//                FragmentTransaction ft = fgm.beginTransaction();
+//                First2Fragment frag2 = new First2Fragment();
+//                frag2.setArguments(data);
+//                ft.replace(R.id.tvusuariologado, frag2);
+//                ft.commit();
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
@@ -78,4 +100,5 @@ public class FirstFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
 }

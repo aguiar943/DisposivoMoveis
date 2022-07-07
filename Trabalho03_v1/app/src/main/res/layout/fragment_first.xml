@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:hint="USUÁRIO"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textAllCaps="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout

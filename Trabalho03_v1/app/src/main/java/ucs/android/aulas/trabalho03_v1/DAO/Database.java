@@ -1,23 +1,15 @@
 package ucs.android.aulas.trabalho03_v1.DAO;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.CpuUsageInfo;
 import android.os.StrictMode;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 import ucs.android.aulas.trabalho03_v1.model.Conversas;
 import ucs.android.aulas.trabalho03_v1.model.Usuarios;
@@ -103,22 +95,60 @@ public class Database  {
         stmt.close();
     }
 
+    public void  VerificaUsuario (String Usuario) throws SQLException {
+        String SQL;
+        SQL = "SELECT COUNT(*) FROM public.ag_usuarios  " +
+        " WHERE us_usuario = '" + Usuario + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(SQL);
+        int totalOfRecords = rs.getRow();
+        while (rs.next()){
+            Conversas conversas = new Conversas();
+            conversas.setMsg(rs.getString("co_msg"));
+
+        }
+        rs.close();
+        st.close();
+    }
+
     public void AddUsuario (String Usuario, String Online) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO public.ag_usuarios( " +
-                "us_usuario, us_online) " +
-                "    VALUES ( ?, ?);");
-        stmt.setString(1, Usuario);
-        stmt.setString(2, Online);
-        int rows = stmt.executeUpdate();
+        String SQL;
+        PreparedStatement stmt;
+        int rows, totalOfRecords;
+        SQL = "SELECT * FROM public.ag_usuarios  " +
+                " WHERE us_usuario = '" + Usuario + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(SQL);
+        totalOfRecords = 0;
+        while (rs.next()) {
+            totalOfRecords++;
+        }
+        rs.close();
+        st.close();
+        if  (totalOfRecords == 0) {
+            stmt = conn.prepareStatement("INSERT INTO public.ag_usuarios( " +
+                    "us_usuario, us_online) " +
+                    "    VALUES ( ?, ?);");
+            stmt.setString(1, Usuario);
+            stmt.setString(2, Online);
+        } else
+        {
+            stmt = conn.prepareStatement("UPDATE  public.ag_usuarios  SET " +
+                    " us_online = ?  " +
+                    " WHERE us_usuario = ?;");
+            stmt.setString(1, Online);
+            stmt.setString(2, Usuario);
+        }
+        rows = stmt.executeUpdate();
         stmt.close();
     }
 
     public void DesconectadaUsuario (String Usuario, String Online) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("UPDATE  public.ag_usuarios  SET " +
-                "us_usuario = ?,  " +
-                "us_online = ? ;");
-        stmt.setString(1, Usuario);
-        stmt.setString(2, Online);
+                " us_online = ?  " +
+                " WHERE us_usuario = ?;");
+        stmt.setString(1, Online);
+        stmt.setString(2, Usuario);
         int rows = stmt.executeUpdate();
         stmt.close();
     }
@@ -141,10 +171,10 @@ public class Database  {
     }
 
 
-    public ArrayList<Usuarios> getMostraOnlines() throws SQLException{
+    public ArrayList<Usuarios> getMostraOnlines(String Usuario) throws SQLException{
         String SQL;
         ArrayList<Usuarios> listaOnlines = new ArrayList<Usuarios>();
-        SQL = "select * from ag_usuarios where us_online ='S'";
+        SQL = "select * from ag_usuarios where us_online ='S' and us_usuario <> '" + Usuario + "'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(SQL);
         while (rs.next()){

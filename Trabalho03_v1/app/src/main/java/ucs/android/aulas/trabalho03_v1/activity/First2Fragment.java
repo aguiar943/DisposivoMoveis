@@ -1,12 +1,16 @@
 package ucs.android.aulas.trabalho03_v1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +28,8 @@ public class First2Fragment extends Fragment {
     private FragmentFirst2Binding binding;
     private RecyclerView recyclerView;
     private Database bd;
+    private String sUsuario;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -34,9 +40,18 @@ public class First2Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclervmsg);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
+
+//        sUsuario = (String) getArguments().getSerializable("UsuarioLogado");
+
+
+
+
+
+
         try {
             Database bd = new Database();
-            recyclerView.setAdapter(new adapterUsuarios(bd.getMostraOnlines(), R.layout.activity_msg, getActivity()));
+            recyclerView.setAdapter(new adapterUsuarios(bd.getMostraOnlines(sUsuario), R.layout.activity_msg, getActivity()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
