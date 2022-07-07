@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity_conversas.class);
+                usuario = view.findViewById(R.id.tvusuario);
 
+                Intent intent = new Intent(MainActivity.this, MainActivity_conversas.class);
+                intent.putExtra("sUsuario", sUsuario);
                 startActivity(intent);
             }
         });

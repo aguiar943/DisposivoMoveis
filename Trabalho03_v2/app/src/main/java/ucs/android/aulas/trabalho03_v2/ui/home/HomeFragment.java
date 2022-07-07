@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,10 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 
+import ucs.android.aulas.trabalho03_v2.DAO.BDSQLiteHelper;
 import ucs.android.aulas.trabalho03_v2.DAO.Database;
 import ucs.android.aulas.trabalho03_v2.R;
+import ucs.android.aulas.trabalho03_v2.activity.MainActivity;
 import ucs.android.aulas.trabalho03_v2.activity.MainActivity_conversas;
 import ucs.android.aulas.trabalho03_v2.databinding.FragmentHomeBinding;
 import ucs.android.aulas.trabalho03_v2.ui.gallery.GalleryFragment;
@@ -26,6 +30,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private Database bd;
+    private BDSQLiteHelper bdlocal;
     private RecyclerView recyclerView;
     private EditText usuario;
     private String sUsuario;
@@ -37,9 +42,6 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
@@ -60,9 +62,14 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-//                Intent intent = new Intent(getContext(), GalleryFragment.class);
-//                intent.putExtra("sUsuario", sUsuario);
-//                startActivity(intent);
+                bdlocal = new BDSQLiteHelper(getActivity());
+                bdlocal.LimpaUsuarios();
+                bdlocal.addUsuario(sUsuario);
+
+                Intent abrirOutraActivity = new Intent(getActivity(), MainActivity_conversas.class);
+                abrirOutraActivity.putExtra("sUsuario", sUsuario);
+                startActivity(abrirOutraActivity);
+
 
             }
         });

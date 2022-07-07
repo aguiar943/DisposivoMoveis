@@ -24,6 +24,7 @@ public class Database {
     public static Connection conn;
     public static Statement stmt;
     public static ResultSet rs;
+    public static String sNomeSalvo;
 
     public boolean  getConnection() throws Exception  {
         if (android.os.Build.VERSION.SDK_INT > 9){
@@ -109,7 +110,7 @@ public class Database {
         }
         rs.close();
         st.close();
-
+        sNomeSalvo = Usuario;
         return resposta;
     }
 
@@ -195,6 +196,5 @@ public class Database {
         usuarios.setOnline(cursor.getString(2));
         return usuarios;
     }
-
 
 }

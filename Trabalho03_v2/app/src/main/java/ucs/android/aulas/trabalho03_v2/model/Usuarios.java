@@ -5,14 +5,16 @@ import java.io.Serializable;
 public class Usuarios implements Serializable {
     private int us_idl;
     private String us_usuario, us_online;
+    private String sUsuarioLogado;
 
     public Usuarios() { }
 
-    public Usuarios(int us_idl, String us_usuario, String us_online) {
+    public Usuarios(int us_idl, String us_usuario, String us_online, String sUsuarioLogado) {
         super();
         this.us_idl = us_idl;
         this.us_usuario = us_usuario;
         this.us_online = us_online;
+        this.sUsuarioLogado = sUsuarioLogado;
 
     }
 
@@ -38,6 +40,14 @@ public class Usuarios implements Serializable {
 
     public void setOnline(String us_online) {
         this.us_online = us_online;
+    }
+
+    public String getUsuarioLogado() {
+        return sUsuarioLogado;
+    }
+
+    public void setUsuarioLogado(String sUsuarioLogado) {
+        this.sUsuarioLogado = sUsuarioLogado;
     }
 
 }

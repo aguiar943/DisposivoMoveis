@@ -27,6 +27,7 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.PostVi
     public static class PostViewHolder extends RecyclerView.ViewHolder {
         LinearLayout postsLayout;
         TextView VarUsuario;
+        TextView VarUsuarioLogado;
 //        TextView VarOnline;
 
 
@@ -34,11 +35,7 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.PostVi
             super(v);
             postsLayout = (LinearLayout) v.findViewById(R.id.IDONLINES);
             VarUsuario = (TextView) v.findViewById(R.id.tvnome);
-//            VarOnline = (TextView) v.findViewById(R.id.tvlocalizacao);
-//            VarLogradouro = (TextView) v.findViewById(R.id.tvlogradouro);
-//            VarUF = (TextView) v.findViewById(R.id.tvuf);
-//            VarIBGE = (TextView) v.findViewById(R.id.tvibge);
-//            VarComplemento = (TextView) v.findViewById(R.id.tvcomplemento);
+            VarUsuarioLogado = (TextView) v.findViewById(R.id.tvnomelogado);
         }
     }
 
