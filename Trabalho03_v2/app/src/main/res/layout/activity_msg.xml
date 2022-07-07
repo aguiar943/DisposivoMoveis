@@ -13,7 +13,9 @@
             android:id="@+id/tvnome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nome" />
+            android:fontFamily="sans-serif-medium"
+            android:text="nome"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvnome2"

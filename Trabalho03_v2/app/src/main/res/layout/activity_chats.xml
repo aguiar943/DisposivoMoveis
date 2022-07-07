@@ -13,19 +13,22 @@
             android:id="@+id/tvnomechat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nome" />
+            android:text="nome"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvmensagemchat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TESTE" />
+            android:text="TESTE"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvlocalizaochat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvlocalizacao3"

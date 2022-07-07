@@ -24,7 +24,12 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Usuários" />
+            android:background="#F1B5B5"
+            android:fontFamily="sans-serif-black"
+            android:gravity="bottom|center|top"
+            android:text="Usuários ONLINES"
+            android:textAllCaps="true"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tvusuariologado"
