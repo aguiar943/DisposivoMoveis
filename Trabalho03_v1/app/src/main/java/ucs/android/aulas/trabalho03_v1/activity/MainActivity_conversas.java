@@ -38,14 +38,6 @@ public class MainActivity_conversas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        FragmentTransaction ft = fgm.beginTransaction();
-
-        //Instanciando os fragments
-        First2Fragment frag1 = new First2Fragment();
-        ft.add(R.id.tvusuario, frag1);
-        ft.commit();
-
         binding = ActivityMainConversasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
