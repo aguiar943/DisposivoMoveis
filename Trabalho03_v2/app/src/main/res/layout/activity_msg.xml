@@ -7,8 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="15dp"
+        android:orientation="horizontal">
 
+<<<<<<< Updated upstream
         <TextView
             android:id="@+id/tvnome"
             android:layout_width="match_parent"
@@ -16,25 +18,55 @@
             android:fontFamily="sans-serif-medium"
             android:text="nome"
             android:textSize="20sp" />
+=======
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+>>>>>>> Stashed changes
 
-        <TextView
-            android:id="@+id/tvnome2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="nomeusuariologado"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvnome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User name"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvlocalizacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="localizacao"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvnome2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="18dp"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tvlocalizacao2"
+            <TextView
+                android:id="@+id/tvlocalizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvlocalizacao2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_navigate_next_24" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

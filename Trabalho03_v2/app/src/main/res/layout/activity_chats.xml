@@ -7,8 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="15dp"
+        android:orientation="horizontal">
 
+<<<<<<< Updated upstream
         <TextView
             android:id="@+id/tvnomechat"
             android:layout_width="match_parent"
@@ -29,11 +31,41 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="20sp" />
+=======
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
 
-        <TextView
-            android:id="@+id/tvlocalizacao3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
+            <TextView
+                android:id="@+id/tvnomechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User name"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvmensagemchat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="18dp" />
+>>>>>>> Stashed changes
+
+            <TextView
+                android:id="@+id/tvlocalizaochat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/tvlocalizacao3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
