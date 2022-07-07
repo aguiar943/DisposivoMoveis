@@ -33,8 +33,6 @@ public class MainActivity_chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat);
 
-
-
         texto = (EditText) findViewById(R.id.edittxtmsg);
         TextView conexao = (TextView) findViewById(R.id.tvusuario);
         sUsuario = texto.getText().toString();
@@ -92,6 +90,5 @@ public class MainActivity_chat extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
