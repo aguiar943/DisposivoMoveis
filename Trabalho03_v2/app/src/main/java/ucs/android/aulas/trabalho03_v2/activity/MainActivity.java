@@ -1,8 +1,10 @@
 package ucs.android.aulas.trabalho03_v2.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -13,7 +15,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import ucs.android.aulas.trabalho03_v2.DAO.Database;
 import ucs.android.aulas.trabalho03_v2.R;
 import ucs.android.aulas.trabalho03_v2.databinding.ActivityMainBinding;
 
@@ -21,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private Database bd;
+    private RecyclerView recyclerView;
+    private EditText usuario;
+    private String sUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        sUsuario = "";
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, MainActivity_conversas.class);
+
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
